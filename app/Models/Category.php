@@ -16,4 +16,9 @@ class Category extends Model
         'icon',
         'active',
     ];
+
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
 }

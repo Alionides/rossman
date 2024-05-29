@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -108,6 +109,9 @@ class ProductController extends Controller
                 'name_az' => $product['name'],
                 'name_en' => $product['name'],
                 'name_ru' => $product['name'],
+                'slug_az' => Str::of($product['name'])->slug('-'),
+                'slug_en' => Str::of($product['name'])->slug('-'),
+                'slug_ru' => Str::of($product['name'])->slug('-'),
                 'text_az' => $product['text_az'] ?? null,
                 'text_en' => $product['text_en'] ?? null,
                 'text_ru' => $product['text_ru'] ?? null,

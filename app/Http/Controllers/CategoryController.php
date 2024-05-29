@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -96,6 +97,9 @@ class CategoryController extends Controller
                 'name_az' => $category['name'],
                 'name_en' => $category['name'],
                 'name_ru' => $category['name'],
+                'slug_az' => Str::of($category['name'])->slug('-'),
+                'slug_en' => Str::of($category['name'])->slug('-'),
+                'slug_ru' => Str::of($category['name'])->slug('-'),
                 'icon' => $category['icon'] ?? null,
                 'active' => 1,
                 'created_at' => now(),

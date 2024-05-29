@@ -1,6 +1,9 @@
 <?php
 
+use App\Admin\Controllers\CategoryController;
+use App\Admin\Controllers\ProductController;
 use Illuminate\Routing\Router;
+use App\Admin\Controllers\BrandController;
 
 Admin::routes();
 
@@ -12,5 +15,8 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('home');
+    $router->resource('brands', BrandController::class);
+    $router->resource('categories', CategoryController::class);
+    $router->resource('products', ProductController::class);
 
 });

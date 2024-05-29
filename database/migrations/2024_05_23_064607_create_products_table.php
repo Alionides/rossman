@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('name_az')->default('');
             $table->string('name_en')->default('');
             $table->string('name_ru')->default('');
+            $table->string('slug_az')->default('');
+            $table->string('slug_en')->default('');
+            $table->string('slug_ru')->default('');
             $table->text('text_az')->nullable();
             $table->text('text_en')->nullable();
             $table->text('text_ru')->nullable();

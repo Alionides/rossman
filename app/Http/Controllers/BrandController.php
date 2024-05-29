@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
@@ -98,6 +99,7 @@ class BrandController extends Controller
             $brandData[] = [
                 'code' => $brand['markCode'],
                 'name' => $brand['markName'],
+                'slug' => Str::of($brand['markName'])->slug('-'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
