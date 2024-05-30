@@ -27,9 +27,16 @@ class BrandController extends AdminController
     {
         $grid = new Grid(new Brand());
 
+//        eager loading
+//
+//        $grid->model()->with('category');
+//        $grid->column('category_id', 'Category')->display(function($catId) {
+//            return $this->category ? $this->category->name_en : '';
+//        });
+
         $grid->column('id', __('Id'));
         $grid->column('image')->image('',60,60);
-        $grid->column('category_id', __('Category id'));
+        $grid->column('category.name_en', __('Category'));
         $grid->column('code', __('Code'));
         $grid->column('slug', __('Slug'));
         $grid->column('name', __('Name'));
@@ -72,11 +79,8 @@ class BrandController extends AdminController
     protected function form()
     {
         $form = new Form(new Brand());
-
 //        $form->number('category_id', __('Category id'));
-
         $form->select('category_id', __("Category id"))->options(Category::all()->pluck('name_en', 'id'));
-
         $form->text('code', __('Code'));
         $form->text('slug', __('Slug'));
         $form->text('name', __('Name'));

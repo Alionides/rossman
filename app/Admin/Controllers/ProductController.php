@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\Category;
 use OpenAdmin\Admin\Controllers\AdminController;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
@@ -28,7 +29,8 @@ class ProductController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('image')->image('',60,60);
-        $grid->column('category_id', __('Category id'));
+//      $grid->column('category_id', __('Category id'));
+        $grid->column('category.name_en', __('Category'));
         $grid->column('code', __('Code'));
         $grid->column('barcode', __('Barcode'));
         $grid->column('listPrice', __('ListPrice'));
@@ -95,8 +97,8 @@ class ProductController extends AdminController
     protected function form()
     {
         $form = new Form(new Product());
-
-        $form->number('category_id', __('Category id'));
+//        $form->number('category_id', __('Category id'));
+        $form->select('category_id', __("Category id"))->options(Category::all()->pluck('name_en', 'id'));
         $form->text('code', __('Code'));
         $form->text('barcode', __('Barcode'));
         $form->decimal('listPrice', __('ListPrice'));

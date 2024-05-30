@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\Redis\CategoryController as RedisCategoryController;
 use App\Http\Controllers\API\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,13 +22,13 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('categoryProductGroup', [CategoryController::class, "categoryProductGroup"])->name('categoryProductGroup');
-Route::get('categoryProductRedisGroup', [CategoryController::class, "categoryProductRedisGroup"])->name('categoryProductRedisGroup');
+Route::get('redis/categoryProductGroup', [RedisCategoryController::class, "categoryProductGroup"])->name('categoryProductGroup');
 
 Route::get('categoryProduct', [CategoryController::class, "categoryProduct"])->name('categoryProduct');
-Route::get('categoryProductRedis', [CategoryController::class, "categoryProductRedis"])->name('categoryProductRedis');
+Route::get('redis/categoryProduct', [RedisCategoryController::class, "categoryProduct"])->name('categoryProduct');
 
 Route::get('category', [CategoryController::class, "category"])->name('category');
-Route::get('categoryRedis', [CategoryController::class, "categoryRedis"])->name('categoryRedis');
+Route::get('redis/category', [RedisCategoryController::class, "category"])->name('category');
 
-Route::get('products', [ProductController::class, "products"])->name('products');
-Route::get('productsRedis', [ProductController::class, "productsRedis"])->name('productsRedis');
+//Route::get('products', [ProductController::class, "products"])->name('products');
+//Route::get('productsRedis', [ProductController::class, "productsRedis"])->name('productsRedis');
