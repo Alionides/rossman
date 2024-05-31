@@ -98,6 +98,7 @@ class CategoryController extends Controller
         $acceptLanguage = $request->header('Accept-Language');
         $nameColumn = 'name_' . $acceptLanguage;
         $categories = Category::all(
+            'id',
             'parent_id',
             'name_'.$acceptLanguage,
             'code',
@@ -107,6 +108,7 @@ class CategoryController extends Controller
 
         $data = $categories->map(function ($category) use ($nameColumn) {
             return [
+                'id' => $category->id,
                 'parent_id' => $category->parent_id,
                 'name' => $category->$nameColumn,
                 'code' => $category->code,
@@ -116,36 +118,5 @@ class CategoryController extends Controller
         });
 
         return response($data);
-    }
-
-    public function categoryRedis(Category $category, Request $request){
-        $acceptLanguage = $request->header('Accept-Language');
-
-        $data = Redis::get('category_r_data');
-
-        if (!$data) {
-            $nameColumn = 'name_' . $acceptLanguage;
-            $categories = Category::all(
-        'parent_id',
-                'name_'.$acceptLanguage,
-                'code',
-                'icon',
-                'active'
-            );
-            $data = $categories->map(function ($category) use ($nameColumn) {
-                return [
-                    'parent_id' => $category->parent_id,
-                    'name' => $category->$nameColumn,
-                    'code' => $category->code,
-                    'icon' => $category->icon,
-                    'active' => $category->active,
-                ];
-            });
-            Redis::set('category_r_data', json_encode($data));
-        }else{
-            $data = json_decode($data, true);
-        }
-
-        return response()->json($data);
     }
 }
