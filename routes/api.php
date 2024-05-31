@@ -22,13 +22,13 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('categoryProductGroup', [CategoryController::class, "categoryProductGroup"])->name('categoryProductGroup');
-Route::get('redis/categoryProductGroup', [RedisCategoryController::class, "categoryProductGroup"])->name('categoryProductGroup');
+Route::get('redis/categoryProductGroup', [RedisCategoryController::class, "categoryProductGroup"])->name('categoryProductGroupR');
 
 Route::get('categoryProduct', [CategoryController::class, "categoryProduct"])->name('categoryProduct');
-Route::get('redis/categoryProduct', [RedisCategoryController::class, "categoryProduct"])->name('categoryProduct');
+Route::get('redis/categoryProduct', [RedisCategoryController::class, "categoryProduct"])->name('categoryProductR');
 
 Route::get('category', [CategoryController::class, "category"])->name('category');
-Route::get('redis/category', [RedisCategoryController::class, "category"])->name('category');
+Route::get('redis/category', [RedisCategoryController::class, "category"])->name('categoryR');
 
 //Route::get('products', [ProductController::class, "products"])->name('products');
 //Route::get('productsRedis', [ProductController::class, "productsRedis"])->name('productsRedis');
