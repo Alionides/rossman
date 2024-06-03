@@ -93,20 +93,34 @@ class CategoryController extends Controller
         return response()->json($response);
     }
 
-
-    public function category(Category $category, Request $request){
+    public function category(Category $category, Request $request)
+    {
         $acceptLanguage = $request->header('Accept-Language');
         $nameColumn = 'name_' . $acceptLanguage;
-        $categories = Category::all(
+
+        $categories = Category::with('products')->get([
             'id',
             'parent_id',
-            'name_'.$acceptLanguage,
+            'name_' . $acceptLanguage,
             'code',
             'icon',
             'active'
-        );
+        ]);
 
-        $data = $categories->map(function ($category) use ($nameColumn) {
+        $categoryMap = $categories->groupBy('parent_id');
+
+        function countProducts($category, $categoryMap)
+        {
+            $totalProducts = $category->products->count();
+            if (isset($categoryMap[$category->id])) {
+                foreach ($categoryMap[$category->id] as $child) {
+                    $totalProducts += countProducts($child, $categoryMap);
+                }
+            }
+            return $totalProducts;
+        }
+
+        $data = $categories->map(function ($category) use ($nameColumn, $categoryMap) {
             return [
                 'id' => $category->id,
                 'parent_id' => $category->parent_id,
@@ -114,9 +128,11 @@ class CategoryController extends Controller
                 'code' => $category->code,
                 'icon' => $category->icon,
                 'active' => $category->active,
+                'total_products' => countProducts($category, $categoryMap),
             ];
         });
 
         return response($data);
     }
+
 }
