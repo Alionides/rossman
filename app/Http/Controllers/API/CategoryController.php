@@ -67,7 +67,12 @@ class CategoryController extends Controller
         $slugColumn = 'slug_' . $acceptLanguage;
         $textColumn = 'text_' . $acceptLanguage;
 
-        $category = Category::findOrFail($request->category_id);
+//        $category = Category::with('children')->findOrFail($request->category_id);
+
+        $slug = $request->input('slug');
+        $slug = filter_var($slug, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        $category = Category::where($slugColumn, $slug)->with('children')->firstOrFail();
 
         // Get all category IDs (including child categories)
         $categoryIds = $this->getAllCategoryIds($category);
@@ -137,6 +142,7 @@ class CategoryController extends Controller
         return [
             'id' => $category->id,
             'name' => $category->$nameColumn,
+            'slug' => $category->$slugColumn,
             'description' => $category->description,
             'parent_id' => $category->parent_id,
             'icon' => $category->icon,

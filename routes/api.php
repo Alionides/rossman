@@ -30,5 +30,5 @@ Route::get('redis/categoryProduct', [RedisCategoryController::class, "categoryPr
 Route::get('category', [CategoryController::class, "category"])->name('category');
 Route::get('redis/category', [RedisCategoryController::class, "category"])->name('categoryR');
 
-//Route::get('products', [ProductController::class, "products"])->name('products');
+Route::get('product', [ProductController::class, "productDetail"])->name('productDetail');
 //Route::get('productsRedis', [ProductController::class, "productsRedis"])->name('productsRedis');
