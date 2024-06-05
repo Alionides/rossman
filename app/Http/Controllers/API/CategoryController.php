@@ -60,59 +60,6 @@ class CategoryController extends Controller
         return $categoryData;
     }
 
-//    public function categoryProduct(Request $request)
-//    {
-//        $acceptLanguage = $request->header('Accept-Language');
-//        $nameColumn = 'name_' . $acceptLanguage;
-//        $slugColumn = 'slug_' . $acceptLanguage;
-//        $textColumn = 'text_' . $acceptLanguage;
-//
-//        $category = Category::findOrFail($request->category_id);
-//
-//        $products = Product::where('category_id', $request->category_id)
-//            ->paginate(10);
-//
-//        $items = $products->map(function ($product) use ($nameColumn, $slugColumn, $textColumn) {
-//            return [
-//                'id' => $product->id,
-//                'category_id' => $product->category_id,
-//                'code' => $product->code,
-//                'barcode' => $product->barcode,
-//                'listPrice' => $product->listPrice,
-//                'salePrice' => $product->salePrice,
-//                'name' => $product->$nameColumn,
-//                'slug' => $product->$slugColumn,
-//                'text' => $product->$textColumn,
-//                'image' => $product->image,
-//                'markCode' => $product->markCode,
-//                'markName' => $product->markName,
-//                'active' => $product->active,
-//                'created_at' => $product->created_at,
-//                'updated_at' => $product->updated_at,
-//            ];
-//        });
-//        $response = [
-//            'category' => [
-//                'id' => $category->id,
-//                'name' => $category->$nameColumn,
-//                'description' => $category->description,
-//                'parent_id' => $category->parent_id,
-//                'icon' => $category->icon,
-//                'active' => $category->active,
-//            ],
-//            'products' => $items, //$products->items(),
-//            'pagination' => [
-//                'total' => $products->total(),
-//                'per_page' => $products->perPage(),
-//                'current_page' => $products->currentPage(),
-//                'last_page' => $products->lastPage(),
-//                'next_page_url' => $products->nextPageUrl(),
-//                'prev_page_url' => $products->previousPageUrl(),
-//            ]
-//        ];
-//
-//        return response()->json($response);
-//    }
     public function categoryProduct(Request $request)
     {
         $acceptLanguage = $request->header('Accept-Language');
@@ -126,7 +73,7 @@ class CategoryController extends Controller
         $categoryIds = $this->getAllCategoryIds($category);
 
         // Fetch products from all these categories
-        $products = Product::whereIn('category_id', $categoryIds)->paginate(10);
+        $products = Product::whereIn('category_id', $categoryIds)->paginate(32);
 
         $items = $products->map(function ($product) use ($nameColumn, $slugColumn, $textColumn) {
             return [
