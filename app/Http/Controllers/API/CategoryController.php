@@ -172,7 +172,7 @@ class CategoryController extends Controller
             'id',
             'parent_id',
             'name_' . $acceptLanguage,
-            'slug_en',
+            'slug_' . $acceptLanguage,
             'code',
             'icon',
             'active'
