@@ -73,6 +73,7 @@ class CategoryController extends Controller
         $slug = filter_var($slug, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         $category = Category::where($slugColumn, $slug)->with('children')->firstOrFail();
+//        return response($category);
 
         // Get all category IDs (including child categories)
         $categoryIds = $this->getAllCategoryIds($category);
@@ -89,7 +90,10 @@ class CategoryController extends Controller
                 'listPrice' => $product->listPrice,
                 'salePrice' => $product->salePrice,
                 'name' => $product->$nameColumn,
-                'slug' => $product->$slugColumn,
+//                'slug' => $product->$slugColumn,
+                'slug_az' => $product->slug_az,
+                'slug_en' => $product->slug_en,
+                'slug_ru' => $product->slug_ru,
                 'text' => $product->$textColumn,
                 'image' => $product->image,
                 'markCode' => $product->markCode,
@@ -142,7 +146,10 @@ class CategoryController extends Controller
         return [
             'id' => $category->id,
             'name' => $category->$nameColumn,
-            'slug' => $category->$slugColumn,
+//            'slug' => $category->$slugColumn,
+            'slug_az' => $category->slug_az,
+            'slug_en' => $category->slug_en,
+            'slug_ru' => $category->slug_ru,
             'description' => $category->description,
             'parent_id' => $category->parent_id,
             'icon' => $category->icon,
@@ -152,7 +159,10 @@ class CategoryController extends Controller
                 return [
                     'id' => $child->id,
                     'name' => $child->$nameColumn,
-                    'slug' => $child->$slugColumn,
+//                    'slug' => $child->$slugColumn,
+                    'slug_az' => $child->slug_az,
+                    'slug_en' => $child->slug_en,
+                    'slug_ru' => $child->slug_ru,
                     'description' => $child->description,
                     'parent_id' => $child->parent_id,
                     'icon' => $child->icon,
@@ -173,6 +183,9 @@ class CategoryController extends Controller
             'parent_id',
             'name_' . $acceptLanguage,
             'slug_' . $acceptLanguage,
+            'slug_az',
+            'slug_en',
+            'slug_ru',
             'code',
             'icon',
             'active'
@@ -196,7 +209,10 @@ class CategoryController extends Controller
                 'id' => $category->id,
                 'parent_id' => $category->parent_id,
                 'name' => $category->$nameColumn,
-                'slug' => $category->$slugColumn,
+//                'slug' => $category->$slugColumn,
+                'slug_az' => $category->slug_az,
+                'slug_en' => $category->slug_en,
+                'slug_ru' => $category->slug_ru,
                 'code' => $category->code,
                 'icon' => $category->icon,
                 'active' => $category->active,
