@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class About extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'seo_title_en',
+        'active',
+    ];
 }

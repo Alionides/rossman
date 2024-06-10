@@ -14,28 +14,28 @@ return new class extends Migration
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
 
-            $table->string('seo_title_az')->default('');
-            $table->string('seo_desc_az')->default('');
-            $table->string('seo_title_en')->default('');
-            $table->string('seo_desc_en')->default('');
-            $table->string('seo_title_ru')->default('');
-            $table->string('seo_desc_ru')->default('');
-
-            $table->string('page_name_az')->default('');
-            $table->string('page_title_az')->default('');
-            $table->string('page_desc_az')->default('');
-
-            $table->string('page_name_en')->default('');
-            $table->string('page_title_en')->default('');
-            $table->string('page_desc_en')->default('');
-
-            $table->string('page_name_ru')->default('');
-            $table->string('page_title_ru')->default('');
-            $table->string('page_desc_ru')->default('');
-
-            $table->string('slug_az')->default('');
-            $table->string('slug_en')->default('');
-            $table->string('slug_ru')->default('');
+//            $table->string('seo_title_az')->default('');
+//            $table->string('seo_desc_az')->default('');
+//            $table->string('seo_title_en')->default('');
+//            $table->string('seo_desc_en')->default('');
+//            $table->string('seo_title_ru')->default('');
+//            $table->string('seo_desc_ru')->default('');
+//
+//            $table->string('page_name_az')->default('');
+//            $table->string('page_title_az')->default('');
+//            $table->string('page_desc_az')->default('');
+//
+//            $table->string('page_name_en')->default('');
+//            $table->string('page_title_en')->default('');
+//            $table->string('page_desc_en')->default('');
+//
+//            $table->string('page_name_ru')->default('');
+//            $table->string('page_title_ru')->default('');
+//            $table->string('page_desc_ru')->default('');
+//
+//            $table->string('slug_az')->default('');
+//            $table->string('slug_en')->default('');
+//            $table->string('slug_ru')->default('');
 
 //            $table->string('sec_1_name_az')->default('');
 //            $table->string('sec_1_name_en')->default('');
@@ -75,6 +75,7 @@ return new class extends Migration
 //            $table->string('statistic_title_en')->default('');
 //            $table->string('statistic_title_ru')->default('');
 //            $table->string('statistic_icon')->default('');
+
             $table->json('statistic')->nullable();
 
             $table->json('slider')->nullable();
