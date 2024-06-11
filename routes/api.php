@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AboutController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\Redis\CategoryController as RedisCategoryController;
 use App\Http\Controllers\API\ProductController;
@@ -32,3 +33,5 @@ Route::get('redis/category', [RedisCategoryController::class, "category"])->name
 
 Route::get('product', [ProductController::class, "productDetail"])->name('productDetail');
 //Route::get('productsRedis', [ProductController::class, "productsRedis"])->name('productsRedis');
+
+Route::get('about', [AboutController::class, "about"])->name('about');

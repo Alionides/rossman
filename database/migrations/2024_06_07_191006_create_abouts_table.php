@@ -14,73 +14,102 @@ return new class extends Migration
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
 
-//            $table->string('seo_title_az')->default('');
-//            $table->string('seo_desc_az')->default('');
-//            $table->string('seo_title_en')->default('');
-//            $table->string('seo_desc_en')->default('');
-//            $table->string('seo_title_ru')->default('');
-//            $table->string('seo_desc_ru')->default('');
-//
-//            $table->string('page_name_az')->default('');
-//            $table->string('page_title_az')->default('');
-//            $table->string('page_desc_az')->default('');
-//
-//            $table->string('page_name_en')->default('');
-//            $table->string('page_title_en')->default('');
-//            $table->string('page_desc_en')->default('');
-//
-//            $table->string('page_name_ru')->default('');
-//            $table->string('page_title_ru')->default('');
-//            $table->string('page_desc_ru')->default('');
-//
-//            $table->string('slug_az')->default('');
-//            $table->string('slug_en')->default('');
-//            $table->string('slug_ru')->default('');
+            $table->string('seo_title_az')->nullable();
+            $table->text('seo_desc_az')->nullable();
 
-//            $table->string('sec_1_name_az')->default('');
-//            $table->string('sec_1_name_en')->default('');
-//            $table->string('sec_1_name_ru')->default('');
-//            $table->string('sec_1_title_az')->default('');
-//            $table->string('sec_1_title_en')->default('');
-//            $table->string('sec_1_title_ru')->default('');
-//            $table->string('sec_1_desc_az')->default('');
-//            $table->string('sec_1_desc_en')->default('');
-//            $table->string('sec_1_desc_ru')->default('');
-//            $table->string('sec_1_image')->nullable();
-//
-//            $table->string('sec_2_name_az')->default('');
-//            $table->string('sec_2_name_en')->default('');
-//            $table->string('sec_2_name_ru')->default('');
-//            $table->string('sec_2_title_az')->default('');
-//            $table->string('sec_2_title_en')->default('');
-//            $table->string('sec_2_title_ru')->default('');
-//            $table->string('sec_2_desc_az')->default('');
-//            $table->string('sec_2_desc_en')->default('');
-//            $table->string('sec_2_desc_ru')->default('');
-//            $table->string('sec_2_image')->nullable();
-//
-//            $table->string('sec_3_name_az')->default('');
-//            $table->string('sec_3_name_en')->default('');
-//            $table->string('sec_3_name_ru')->default('');
-//            $table->string('sec_3_title_az')->default('');
-//            $table->string('sec_3_title_en')->default('');
-//            $table->string('sec_3_title_ru')->default('');
-//            $table->string('sec_3_desc_az')->default('');
-//            $table->string('sec_3_desc_en')->default('');
-//            $table->string('sec_3_desc_ru')->default('');
-//            $table->string('sec_3_image')->nullable();
+            $table->string('seo_title_en')->nullable();
+            $table->text('seo_desc_en')->nullable();
 
-//            $table->string('statistic_count')->default('');
-//            $table->string('statistic_title_az')->default('');
-//            $table->string('statistic_title_en')->default('');
-//            $table->string('statistic_title_ru')->default('');
-//            $table->string('statistic_icon')->default('');
+            $table->string('seo_title_ru')->nullable();
+            $table->text('seo_desc_ru')->nullable();
 
-            $table->json('statistic')->nullable();
+            $table->string('page_name_az')->nullable();
+            $table->string('page_title_az')->nullable();
+            $table->text('page_desc_az')->nullable();
 
-            $table->json('slider')->nullable();
+            $table->string('page_name_en')->nullable();
+            $table->string('page_title_en')->nullable();
+            $table->text('page_desc_en')->nullable();
 
-            $table->json('vision')->nullable();
+            $table->string('page_name_ru')->nullable();
+            $table->string('page_title_ru')->nullable();
+            $table->text('page_desc_ru')->nullable();
+
+            $table->string('slug_az')->nullable();
+            $table->string('slug_en')->nullable();
+            $table->string('slug_ru')->nullable();
+
+            $table->string('sec_1_name_az')->nullable();
+            $table->string('sec_1_name_en')->nullable();
+            $table->string('sec_1_name_ru')->nullable();
+            $table->string('sec_1_title_az')->nullable();
+            $table->string('sec_1_title_en')->nullable();
+            $table->string('sec_1_title_ru')->nullable();
+            $table->text('sec_1_desc_az')->nullable();
+            $table->text('sec_1_desc_en')->nullable();
+            $table->text('sec_1_desc_ru')->nullable();
+            $table->string('sec_1_image')->nullable();
+
+            $table->string('sec_2_name_az')->nullable();
+            $table->string('sec_2_name_en')->nullable();
+            $table->string('sec_2_name_ru')->nullable();
+            $table->string('sec_2_title_az')->nullable();
+            $table->string('sec_2_title_en')->nullable();
+            $table->string('sec_2_title_ru')->nullable();
+            $table->text('sec_2_desc_az')->nullable();
+            $table->text('sec_2_desc_en')->nullable();
+            $table->text('sec_2_desc_ru')->nullable();
+            $table->string('sec_2_image')->nullable();
+
+            $table->string('sec_3_name_az')->nullable();
+            $table->string('sec_3_name_en')->nullable();
+            $table->string('sec_3_name_ru')->nullable();
+            $table->string('sec_3_title_az')->nullable();
+            $table->string('sec_3_title_en')->nullable();
+            $table->string('sec_3_title_ru')->nullable();
+            $table->text('sec_3_desc_az')->nullable();
+            $table->text('sec_3_desc_en')->nullable();
+            $table->text('sec_3_desc_ru')->nullable();
+            $table->string('sec_3_image')->nullable();
+
+            $table->string('statistic_1_count')->nullable();
+            $table->string('statistic_1_title_az')->nullable();
+            $table->string('statistic_1_title_en')->nullable();
+            $table->string('statistic_1_title_ru')->nullable();
+            $table->string('statistic_1_icon')->nullable();
+
+            $table->string('statistic_2_count')->nullable();
+            $table->string('statistic_2_title_az')->nullable();
+            $table->string('statistic_2_title_en')->nullable();
+            $table->string('statistic_2_title_ru')->nullable();
+            $table->string('statistic_2_icon')->nullable();
+
+            $table->string('statistic_3_count')->nullable();
+            $table->string('statistic_3_title_az')->nullable();
+            $table->string('statistic_3_title_en')->nullable();
+            $table->string('statistic_3_title_ru')->nullable();
+            $table->string('statistic_3_icon')->nullable();
+
+            $table->string('statistic_4_count')->nullable();
+            $table->string('statistic_4_title_az')->nullable();
+            $table->string('statistic_4_title_en')->nullable();
+            $table->string('statistic_4_title_ru')->nullable();
+            $table->string('statistic_4_icon')->nullable();
+
+            $table->text('slider')->nullable();
+
+            $table->string('vision_1_title')->nullable();
+            $table->text('vision_1_desc')->nullable();
+            $table->string('vision_1_image')->nullable();
+
+            $table->string('vision_2_title')->nullable();
+            $table->text('vision_2_desc')->nullable();
+            $table->string('vision_2_image')->nullable();
+
+            $table->string('banner_title')->nullable();
+            $table->text('banner_desc')->nullable();
+            $table->string('banner_image')->nullable();
+            $table->string('banner_link')->nullable();
 
             $table->boolean('active')->default(1);
             $table->timestamps();
