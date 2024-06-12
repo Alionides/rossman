@@ -296,16 +296,28 @@ class AboutController extends AdminController
             $form->text('statistic_4_icon', __('Statistic 4 icon'));
         });
         $form->tab('Vision', function ($form) {
-            $form->text('vision_1_title', __('Vision 1 title'));
-            $form->textarea('vision_1_desc', __('Vision 1 desc'));
+            $form->text('vision_1_title_az', __('Vision 1 title az'));
+            $form->text('vision_1_title_en', __('Vision 1 title en'));
+            $form->text('vision_1_title_ru', __('Vision 1 title ru'));
+            $form->textarea('vision_1_desc_az', __('Vision 1 desc az '));
+            $form->textarea('vision_1_desc_en', __('Vision 1 desc en'));
+            $form->textarea('vision_1_desc_ru', __('Vision 1 desc ru'));
             $form->image('vision_1_image', __('Vision 1 image'));
-            $form->text('vision_2_title', __('Vision 2 title'));
-            $form->textarea('vision_2_desc', __('Vision 2 desc'));
+            $form->text('vision_2_title_az', __('Vision 2 title az'));
+            $form->text('vision_2_title_en', __('Vision 2 title en'));
+            $form->text('vision_2_title_ru', __('Vision 2 title ru'));
+            $form->textarea('vision_2_desc_az', __('Vision 2 desc az '));
+            $form->textarea('vision_2_desc_en', __('Vision 2 desc en'));
+            $form->textarea('vision_2_desc_ru', __('Vision 2 desc ru'));
             $form->image('vision_2_image', __('Vision 2 image'));
         });
         $form->tab('Banner', function ($form) {
-            $form->text('banner_title', __('Banner title'));
-            $form->textarea('banner_desc', __('Banner desc'));
+            $form->text('banner_title_az', __('Banner title az'));
+            $form->text('banner_title_en', __('Banner title en'));
+            $form->text('banner_title_ru', __('Banner title ru'));
+            $form->textarea('banner_desc_az', __('Banner desc az'));
+            $form->textarea('banner_desc_en', __('Banner desc en'));
+            $form->textarea('banner_desc_ru', __('Banner desc ru'));
             $form->image('banner_image', __('Banner image'));
             $form->text('banner_link', __('Banner link'));
         });

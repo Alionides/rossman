@@ -98,17 +98,29 @@ return new class extends Migration
 
             $table->text('slider')->nullable();
 
-            $table->string('vision_1_title')->nullable();
-            $table->text('vision_1_desc')->nullable();
-            $table->string('vision_1_image')->nullable();
+            $table->string('vision_1_title_az')->nullable();
+            $table->string('vision_1_title_en')->nullable();
+            $table->string('vision_1_title_ru')->nullable();
+            $table->text('vision_1_desc_az')->nullable();
+            $table->text('vision_1_desc_en')->nullable();
+            $table->text('vision_1_desc_ru')->nullable();
+            $table->text('vision_1_image')->nullable();
 
-            $table->string('vision_2_title')->nullable();
-            $table->text('vision_2_desc')->nullable();
-            $table->string('vision_2_image')->nullable();
+            $table->string('vision_2_title_az')->nullable();
+            $table->string('vision_2_title_en')->nullable();
+            $table->string('vision_2_title_ru')->nullable();
+            $table->text('vision_2_desc_az')->nullable();
+            $table->text('vision_2_desc_en')->nullable();
+            $table->text('vision_2_desc_ru')->nullable();
+            $table->text('vision_2_image')->nullable();
 
-            $table->string('banner_title')->nullable();
-            $table->text('banner_desc')->nullable();
-            $table->string('banner_image')->nullable();
+            $table->string('banner_title_az')->nullable();
+            $table->string('banner_title_en')->nullable();
+            $table->string('banner_title_ru')->nullable();
+            $table->text('banner_desc_az')->nullable();
+            $table->text('banner_desc_en')->nullable();
+            $table->text('banner_desc_ru')->nullable();
+            $table->text('banner_image')->nullable();
             $table->string('banner_link')->nullable();
 
             $table->boolean('active')->default(1);
