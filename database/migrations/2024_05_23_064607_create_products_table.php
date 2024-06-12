@@ -27,7 +27,7 @@ return new class extends Migration
             $table->text('text_az')->nullable();
             $table->text('text_en')->nullable();
             $table->text('text_ru')->nullable();
-            $table->string('image')->nullable();
+            $table->text('images')->nullable();
             $table->string('markCode');
             $table->string('markName');
             $table->boolean('active')->default(1);

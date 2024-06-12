@@ -22,6 +22,14 @@ class ProductController extends Controller
 
         $product = Product::where($slugColumn, $slug)->firstOrFail();
 
+        $images = $product->images;
+        if (is_array($images)) {
+            $images = array_map(function($image) {
+                return url('uploads/' . $image);
+            }, $images);
+
+            $product->images = $images;
+        }
         $productDetails = [
             'id' => $product->id,
             'category_id' => $product->category_id,
@@ -35,7 +43,7 @@ class ProductController extends Controller
             'slug_en' => $product->slug_en,
             'slug_ru' => $product->slug_ru,
             'text' => $product->$textColumn,
-            'image' => $product->image,
+            'images' => $product->images,
             'markCode' => $product->markCode,
             'markName' => $product->markName,
             'active' => $product->active,

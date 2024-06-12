@@ -75,13 +75,23 @@ class CategoryController extends Controller
         $category = Category::where($slugColumn, $slug)->with('children')->firstOrFail();
 //        return response($category);
 
-        // Get all category IDs (including child categories)
         $categoryIds = $this->getAllCategoryIds($category);
 
-        // Fetch products from all these categories
         $products = Product::whereIn('category_id', $categoryIds)->paginate(32);
 
         $items = $products->map(function ($product) use ($nameColumn, $slugColumn, $textColumn) {
+
+            // parse json multiple images
+
+            $images = $product->images;
+            if (is_array($images)) {
+                $images = array_map(function($image) {
+                    return url('uploads/' . $image);
+                }, $images);
+
+                $product->images = $images;
+            }
+
             return [
                 'id' => $product->id,
                 'category_id' => $product->category_id,
@@ -95,7 +105,7 @@ class CategoryController extends Controller
                 'slug_en' => $product->slug_en,
                 'slug_ru' => $product->slug_ru,
                 'text' => $product->$textColumn,
-                'image' => $product->image,
+                'images' => $product->images,
                 'markCode' => $product->markCode,
                 'markName' => $product->markName,
                 'active' => $product->active,

@@ -28,7 +28,12 @@ class ProductController extends AdminController
         $grid = new Grid(new Product());
 
         $grid->column('id', __('Id'));
-        $grid->column('image')->image('',60,60);
+//        $grid->column('image')->image('',60,60);
+        $grid->column('images')->display(function ($pictures) {
+
+            return $pictures;
+
+        })->image(env('APP_URL').'/uploads/', 60, 60);
 //      $grid->column('category_id', __('Category id'));
         $grid->column('category.name_en', __('Category'));
         $grid->column('code', __('Code'));
@@ -51,6 +56,9 @@ class ProductController extends AdminController
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
+        $grid->filter(function($filter){
+            $filter->like('barcode', 'barcode');
+        });
         return $grid;
     }
 
@@ -112,7 +120,7 @@ class ProductController extends AdminController
         $form->textarea('text_az', __('Text az'));
         $form->textarea('text_en', __('Text en'));
         $form->textarea('text_ru', __('Text ru'));
-        $form->image('image', __('Image'));
+        $form->multipleImage('images', 'Images');
         $form->text('markCode', __('MarkCode'));
         $form->text('markName', __('MarkName'));
         $form->switch('active', __('Active'))->default(1);

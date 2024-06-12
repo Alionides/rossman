@@ -115,6 +115,7 @@ class ProductController extends Controller
                 'text_az' => $product['text_az'] ?? null,
                 'text_en' => $product['text_en'] ?? null,
                 'text_ru' => $product['text_ru'] ?? null,
+                'images' => json_encode([$product['barcode'] ? 'images/' . $product['barcode'] . '.jpg' : null]),
                 'markCode' => $product['markCode'],
                 'markName' => $product['markName'],
                 'active' => 1,

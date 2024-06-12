@@ -28,7 +28,7 @@ class AboutController extends Controller
         $sliderImages = $data->slider;
         if (is_array($sliderImages)) {
             $sliderImages = array_map(function($image) {
-                return url('uploads/images/' . $image);
+                return url('uploads/' . $image);
             }, $sliderImages);
 
             $data->slider = $sliderImages;
