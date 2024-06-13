@@ -10,12 +10,12 @@ class AboutController extends Controller
 {
     public function about(Request $request){
         $acceptLanguage = $request->header('Accept-Language');
-        $slugColumn = 'slug_' . $acceptLanguage;
+//        $slugColumn = 'slug_' . $acceptLanguage;
 
-        $slug = $request->input('slug');
-        $slug = filter_var($slug, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+//        $slug = $request->input('slug');
+//        $slug = filter_var($slug, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $data = About::where($slugColumn, $slug)->firstOrFail();
+        $data = About::find(1);
 
         $data->sec_1_image = $data->sec_1_image ? url('uploads/' . $data->sec_1_image) : null;
         $data->sec_2_image = $data->sec_2_image ? url('uploads/' . $data->sec_2_image) : null;
@@ -29,7 +29,7 @@ class AboutController extends Controller
             'sec_name' => $data->$sec_1_name,
             'sec_title' => $data->$sec_1_title,
             'sec_desc' => $data->$sec_1_desc,
-            'sec_image' => url('uploads/' . $data->sec_1_image)
+            'sec_image' => url($data->sec_1_image)
         ];
         $sec_2_name = 'sec_2_name_' . $acceptLanguage;
         $sec_2_title = 'sec_2_title_' . $acceptLanguage;
@@ -39,7 +39,7 @@ class AboutController extends Controller
             'sec_title' => $data->$sec_2_title,
             'sec_desc' => $data->$sec_2_desc,
             'sec_image' => $data->sec_2_image,
-            'sec_image' => url('uploads/' . $data->sec_2_image)
+            'sec_image' => url($data->sec_2_image)
         ];
         $sec_3_name = 'sec_3_name_' . $acceptLanguage;
         $sec_3_title = 'sec_3_title_' . $acceptLanguage;
@@ -48,7 +48,7 @@ class AboutController extends Controller
             'sec_name' => $data->$sec_3_name,
             'sec_title' => $data->$sec_3_title,
             'sec_desc' => $data->$sec_3_desc,
-            'sec_image' => url('uploads/' . $data->sec_3_image)
+            'sec_image' => url($data->sec_3_image)
         ];
 
         $statistics = [];
@@ -117,6 +117,8 @@ class AboutController extends Controller
         $page_name = 'page_name_' . $acceptLanguage;
         $page_title = 'page_title_' . $acceptLanguage;
         $page_desc = 'page_desc_' . $acceptLanguage;
+        $top_banner_title = 'top_banner_title_' . $acceptLanguage;
+        $top_banner_desc = 'top_banner_desc_' . $acceptLanguage;
         $banner_title = 'banner_title_' . $acceptLanguage;
         $banner_desc = 'banner_desc_' . $acceptLanguage;
 
@@ -127,13 +129,17 @@ class AboutController extends Controller
             'page_name' => $data->$page_name,
             'page_title' => $data->$page_title,
             'page_desc' => $data->$page_desc,
-            'slug_az' => $data->slug_az,
-            'slug_en' => $data->slug_en,
-            'slug_ru' => $data->slug_ru,
+//            'slug_az' => $data->slug_az,
+//            'slug_en' => $data->slug_en,
+//            'slug_ru' => $data->slug_ru,
             'sections' => $sections,
             'statistics' => $statistics,
             'slider' => $data->slider,
             'visions' => $visions,
+            'top_banner_title' => $data->$top_banner_title,
+            'top_banner_desc' => $data->$top_banner_desc,
+            'top_banner_image' => url($data->top_banner_image),
+            'top_banner_link' => $data->banner_link,
             'banner_title' => $data->$banner_title,
             'banner_desc' => $data->$banner_desc,
             'banner_image' => url($data->banner_image),

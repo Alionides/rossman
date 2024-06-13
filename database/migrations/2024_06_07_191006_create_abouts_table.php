@@ -114,6 +114,15 @@ return new class extends Migration
             $table->text('vision_2_desc_ru')->nullable();
             $table->text('vision_2_image')->nullable();
 
+            $table->text('top_banner_title_az')->nullable();
+            $table->text('top_banner_title_en')->nullable();
+            $table->text('top_banner_title_ru')->nullable();
+            $table->text('top_banner_desc_az')->nullable();
+            $table->text('top_banner_desc_en')->nullable();
+            $table->text('top_banner_desc_ru')->nullable();
+            $table->text('top_banner_image')->nullable();
+            $table->text('top_banner_link')->nullable();
+
             $table->string('banner_title_az')->nullable();
             $table->string('banner_title_en')->nullable();
             $table->string('banner_title_ru')->nullable();
@@ -122,6 +131,8 @@ return new class extends Migration
             $table->text('banner_desc_ru')->nullable();
             $table->text('banner_image')->nullable();
             $table->string('banner_link')->nullable();
+
+
 
             $table->boolean('active')->default(1);
             $table->timestamps();

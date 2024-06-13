@@ -312,6 +312,15 @@ class AboutController extends AdminController
             $form->image('vision_2_image', __('Vision 2 image'));
         });
         $form->tab('Banner', function ($form) {
+            $form->text('top_banner_title_az', __('Top Banner title az'));
+            $form->text('top_banner_title_en', __('Top Banner title en'));
+            $form->text('top_banner_title_ru', __('Top Banner title ru'));
+            $form->textarea('top_banner_desc_az', __('Top Banner desc az'));
+            $form->textarea('top_banner_desc_en', __('Top Banner desc en'));
+            $form->textarea('top_banner_desc_ru', __('Top Banner desc ru'));
+            $form->image('top_banner_image', __('Top Banner image'));
+            $form->text('top_banner_link', __('Top Banner link'));
+
             $form->text('banner_title_az', __('Banner title az'));
             $form->text('banner_title_en', __('Banner title en'));
             $form->text('banner_title_ru', __('Banner title ru'));
