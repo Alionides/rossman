@@ -9,6 +9,10 @@ class About extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'links' =>'json',
+    ];
+
     public function setSliderAttribute($pictures)
     {
         if (is_array($pictures)) {

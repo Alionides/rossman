@@ -272,6 +272,15 @@ class AboutController extends AdminController
             $form->text('page_name_ru', __('Page name ru'));
             $form->text('page_title_ru', __('Page title ru'));
             $form->textarea('page_desc_ru', __('Page desc ru'));
+
+            $form->table('links', function ($table) {
+                $table->text('title_az')->icon("icon-key");
+                $table->text('title_en')->icon("icon-key");
+                $table->text('title_ru')->icon("icon-key");
+                $table->text('slug');
+                $table->switch('active', __('Active'))->default(1);
+            });
+
         });
         $form->tab('Statistics', function ($form) {
             $form->text('statistic_1_count', __('Statistic 1 count'));
@@ -329,6 +338,13 @@ class AboutController extends AdminController
             $form->textarea('banner_desc_ru', __('Banner desc ru'));
             $form->image('banner_image', __('Banner image'));
             $form->text('banner_link', __('Banner link'));
+        });
+
+        // removing dynamic indexes like new_1 when saving
+        $form->saving(function (Form $form) {
+            if (isset($form->links)) {
+                $form->links = array_values($form->links);
+            }
         });
 
         return $form;

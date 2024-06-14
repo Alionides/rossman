@@ -98,6 +98,8 @@ return new class extends Migration
 
             $table->text('slider')->nullable();
 
+            $table->text('links')->nullable();
+
             $table->string('vision_1_title_az')->nullable();
             $table->string('vision_1_title_en')->nullable();
             $table->string('vision_1_title_ru')->nullable();

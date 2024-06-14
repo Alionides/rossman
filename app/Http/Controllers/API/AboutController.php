@@ -135,6 +135,7 @@ class AboutController extends Controller
             'sections' => $sections,
             'statistics' => $statistics,
             'slider' => $data->slider,
+            'links' => $data->links,
             'visions' => $visions,
             'top_banner_title' => $data->$top_banner_title,
             'top_banner_desc' => $data->$top_banner_desc,
