@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AboutController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\NavigationController;
 use App\Http\Controllers\API\Redis\CategoryController as RedisCategoryController;
 use App\Http\Controllers\API\ProductController;
 use Illuminate\Http\Request;
@@ -35,3 +36,5 @@ Route::get('product', [ProductController::class, "productDetail"])->name('produc
 //Route::get('productsRedis', [ProductController::class, "productsRedis"])->name('productsRedis');
 
 Route::get('about', [AboutController::class, "about"])->name('about');
+
+Route::get('navigation', [NavigationController::class, "navigation"])->name('navigation');
