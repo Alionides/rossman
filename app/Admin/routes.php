@@ -2,6 +2,7 @@
 
 use App\Admin\Controllers\AboutController;
 use App\Admin\Controllers\CategoryController;
+use App\Admin\Controllers\HomePageController;
 use App\Admin\Controllers\NavigationController;
 use App\Admin\Controllers\ProductController;
 use Illuminate\Routing\Router;
@@ -20,6 +21,7 @@ Route::group([
     $router->resource('brands', BrandController::class);
     $router->resource('categories', CategoryController::class);
     $router->resource('products', ProductController::class);
+    $router->resource('homes', HomePageController::class);
     $router->resource('abouts', AboutController::class);
     $router->resource('navigations', NavigationController::class);
 

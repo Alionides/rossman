@@ -13,6 +13,29 @@ return new class extends Migration
     {
         Schema::create('homes', function (Blueprint $table) {
             $table->id();
+            $table->string('seo_title_az')->nullable();
+            $table->text('seo_desc_az')->nullable();
+
+            $table->string('seo_title_en')->nullable();
+            $table->text('seo_desc_en')->nullable();
+
+            $table->string('seo_title_ru')->nullable();
+            $table->text('seo_desc_ru')->nullable();
+
+            $table->string('page_name_az')->nullable();
+            $table->string('page_title_az')->nullable();
+            $table->text('page_desc_az')->nullable();
+
+            $table->string('page_name_en')->nullable();
+            $table->string('page_title_en')->nullable();
+            $table->text('page_desc_en')->nullable();
+
+            $table->string('page_name_ru')->nullable();
+            $table->string('page_title_ru')->nullable();
+            $table->text('page_desc_ru')->nullable();
+
+            $table->string('slug')->nullable();
+
             $table->timestamps();
         });
     }

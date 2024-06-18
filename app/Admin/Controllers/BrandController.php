@@ -85,6 +85,7 @@ class BrandController extends AdminController
         $form->text('slug', __('Slug'));
         $form->text('name', __('Name'));
         $form->image('image', __('Image'));
+        $form->switch('is_home', __('Add Home Page'))->default(0);
         $form->switch('active', __('Active'))->default(1);
 
         return $form;
