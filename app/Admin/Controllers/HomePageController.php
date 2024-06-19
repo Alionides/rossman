@@ -120,7 +120,11 @@ class HomePageController extends AdminController
                 $form->text('desc_ru');
                 $form->image('image_first', __('First image'));
                 $form->image('image_second', __('Second image'));
-                $form->switch('active', __('Active'))->default(1);
+//                $form->switch('active', __('Active'))->default(1);
+                $form->radio('active', __('Active'))->options([
+                    1 => 'Active',
+                    0 => 'Inactive',
+                ])->default(1);
             });
         });
 
@@ -134,7 +138,11 @@ class HomePageController extends AdminController
                 $form->image('image_ru', __('image_ru'));
                 $form->image('image_mobile_ru', __('image_mobile_ru'));
                 $form->text('link', __('Link'));
-                $form->switch('active', __('Active'))->default(1);
+//                $form->switch('active', __('Active'))->default(1);
+                $form->radio('active', __('Active'))->options([
+                    1 => 'Active',
+                    0 => 'Inactive',
+                ])->default(1);
             });
         });
 

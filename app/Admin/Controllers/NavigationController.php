@@ -104,7 +104,11 @@ class NavigationController extends AdminController
                 $table->text('title_en')->icon("icon-key");
                 $table->text('title_ru')->icon("icon-key");
                 $table->text('slug');
-                $table->switch('active', __('Active'))->default(1);
+//                $table->switch('active', __('Active'));
+                $table->radio('active', __('Status'))->options([
+                    1 => 'Active',
+                    0 => 'Inactive',
+                ])->default(1);
             });
 
             $form->table('red_nav_top', function ($table) {
@@ -112,7 +116,11 @@ class NavigationController extends AdminController
                 $table->text('title_en')->icon("icon-key");
                 $table->text('title_ru')->icon("icon-key");
                 $table->text('slug');
-                $table->switch('active', __('Active'))->default(1);
+//                $table->switch('active', __('Active'))->default(1);
+                $table->radio('active', __('Status'))->options([
+                    1 => 'Active',
+                    0 => 'Inactive',
+                ])->default(1);
             });
 
             $form->table('red_nav_bottom', function ($table) {
@@ -120,7 +128,11 @@ class NavigationController extends AdminController
                 $table->text('title_en')->icon("icon-key");
                 $table->text('title_ru')->icon("icon-key");
                 $table->text('slug');
-                $table->switch('active', __('Active'))->default(1);
+//                $table->switch('active', __('Active'))->default(1);
+                $table->radio('active', __('Status'))->options([
+                    1 => 'Active',
+                    0 => 'Inactive',
+                ])->default(1);
             });
 
         });
@@ -134,7 +146,11 @@ class NavigationController extends AdminController
                 $table->text('title_en')->icon("icon-key");
                 $table->text('title_ru')->icon("icon-key");
                 $table->text('slug');
-                $table->switch('active', __('Active'))->default(1);
+//                $table->switch('active', __('Active'))->default(1);
+                $table->radio('active', __('Status'))->options([
+                    1 => 'Active',
+                    0 => 'Inactive',
+                ])->default(1);
             });
 
             $form->text('footer_customer_nav_title_az', __('Footer customer nav title az'));
@@ -145,7 +161,11 @@ class NavigationController extends AdminController
                 $table->text('title_en')->icon("icon-key");
                 $table->text('title_ru')->icon("icon-key");
                 $table->text('slug');
-                $table->switch('active', __('Active'))->default(1);
+//                $table->switch('active', __('Active'))->default(1);
+                $table->radio('active', __('Status'))->options([
+                    1 => 'Active',
+                    0 => 'Inactive',
+                ])->default(1);
             });
             $form->text('footer_rossmanclub_nav_title_az', __('Footer rossmanclub nav title az'));
             $form->text('footer_rossmanclub_nav_title_en', __('Footer rossmanclub nav title en'));
@@ -155,7 +175,11 @@ class NavigationController extends AdminController
                 $table->text('title_en')->icon("icon-key");
                 $table->text('title_ru')->icon("icon-key");
                 $table->text('slug');
-                $table->switch('active', __('Active'))->default(1);
+//                $table->switch('active', __('Active'))->default(1);
+                $table->radio('active', __('Status'))->options([
+                    1 => 'Active',
+                    0 => 'Inactive',
+                ])->default(1);
             });
 
             $form->text('footer_rules_nav_title_az', __('Footer rules nav title az'));
@@ -166,7 +190,11 @@ class NavigationController extends AdminController
                 $table->text('title_en')->icon("icon-key");
                 $table->text('title_ru')->icon("icon-key");
                 $table->text('slug');
-                $table->switch('active', __('Active'))->default(1);
+//                $table->switch('active', __('Active'))->default(1);
+                $table->radio('active', __('Status'))->options([
+                    1 => 'Active',
+                    0 => 'Inactive',
+                ])->default(1);
             });
         });
 
