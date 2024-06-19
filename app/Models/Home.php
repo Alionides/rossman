@@ -13,4 +13,8 @@ class Home extends Model
     {
         return $this->morphMany(Slider::class, 'sliderable');
     }
+    public function banners()
+    {
+        return $this->morphMany(Banner::class, 'bannerable');
+    }
 }

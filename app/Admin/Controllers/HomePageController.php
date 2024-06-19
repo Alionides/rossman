@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Enums\BannerType;
 use OpenAdmin\Admin\Controllers\AdminController;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
@@ -119,6 +120,21 @@ class HomePageController extends AdminController
                 $form->text('desc_ru');
                 $form->image('image_first', __('First image'));
                 $form->image('image_second', __('Second image'));
+                $form->switch('active', __('Active'))->default(1);
+            });
+        });
+
+        $form->tab('Banner', function ($form) {
+            $form->morphMany('banners', function (Form\NestedForm $form) {
+                $form->select('type', 'Banner Type')->options(BannerType::getLabels());
+                $form->image('image_az', __('image_az'));
+                $form->image('image_mobile_az', __('image_mobile_az'));
+                $form->image('image_en', __('image_en'));
+                $form->image('image_mobile_en', __('image_mobile_en'));
+                $form->image('image_ru', __('image_ru'));
+                $form->image('image_mobile_ru', __('image_mobile_ru'));
+                $form->text('link', __('Link'));
+                $form->switch('active', __('Active'))->default(1);
             });
         });
 
