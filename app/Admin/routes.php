@@ -1,6 +1,9 @@
 <?php
 
 use App\Admin\Controllers\AboutController;
+use App\Admin\Controllers\BlogCategoryController;
+use App\Admin\Controllers\BlogController;
+use App\Admin\Controllers\BlogItemController;
 use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\HomePageController;
 use App\Admin\Controllers\NavigationController;
@@ -24,5 +27,8 @@ Route::group([
     $router->resource('homes', HomePageController::class);
     $router->resource('abouts', AboutController::class);
     $router->resource('navigations', NavigationController::class);
+    $router->resource('blogs', BlogController::class);
+    $router->resource('blog-items', BlogItemController::class);
+    $router->resource('blog-categories', BlogCategoryController::class);
 
 });

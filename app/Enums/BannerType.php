@@ -9,6 +9,7 @@ enum BannerType: string
     case THIRD = 'third';
     case FOURTH = 'fourth';
     case FIFTH = 'fifth';
+    case USEFUL = 'useful';
 
     public static function getLabels(): array
     {
@@ -18,6 +19,7 @@ enum BannerType: string
             self::THIRD->value => 'Third',
             self::FOURTH->value => 'Fourth',
             self::FIFTH->value => 'Fifth',
+            self::USEFUL->value => 'Useful Banner',
         ];
     }
 }

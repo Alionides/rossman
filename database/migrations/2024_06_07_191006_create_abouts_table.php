@@ -134,8 +134,6 @@ return new class extends Migration
             $table->text('banner_image')->nullable();
             $table->string('banner_link')->nullable();
 
-
-
             $table->boolean('active')->default(1);
             $table->timestamps();
         });

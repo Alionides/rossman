@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AboutController;
+use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\NavigationController;
 use App\Http\Controllers\API\Redis\CategoryController as RedisCategoryController;
@@ -38,3 +39,7 @@ Route::get('product', [ProductController::class, "productDetail"])->name('produc
 Route::get('about', [AboutController::class, "about"])->name('about');
 
 Route::get('navigation', [NavigationController::class, "navigation"])->name('navigation');
+
+Route::get('blogCategory', [BlogController::class, "blogCategory"])->name('blogCategory');
+Route::get('blogCategoryDetail', [BlogController::class, "blogCategoryDetail"])->name('blogCategoryDetail');
+Route::get('blogItemDetail', [BlogController::class, "blogItemDetail"])->name('blogItemDetail');
