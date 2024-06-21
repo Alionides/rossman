@@ -95,27 +95,37 @@ class BlogCategoryController extends AdminController
     protected function form()
     {
         $form = new Form(new BlogCategory());
+        $form->tab('General', function ($form) {
+            $form->select('product_category_id', __("Product Category"))->options(Category::all()->pluck('name_en', 'id'));
+            $form->text('seo_title_az', __('Seo title az'));
+            $form->textarea('seo_desc_az', __('Seo desc az'));
+            $form->text('seo_title_en', __('Seo title en'));
+            $form->textarea('seo_desc_en', __('Seo desc en'));
+            $form->text('seo_title_ru', __('Seo title ru'));
+            $form->textarea('seo_desc_ru', __('Seo desc ru'));
+            $form->text('title_az', __('Title az'));
+            $form->text('slug_az', __('Slug az'));
+            $form->textarea('text_az', __('Text az'));
+            $form->text('title_en', __('Title en'));
+            $form->text('slug_en', __('Slug en'));
+            $form->textarea('text_en', __('Text en'));
+            $form->text('title_ru', __('Title ru'));
+            $form->text('slug_ru', __('Slug ru'));
+            $form->textarea('text_ru', __('Text ru'));
+            $form->image('image', __('Image'));
+            $form->switch('active', __('Active'))->default(1);
+        });
 
-//        $form->number('product_category_id', __('Product category id'));
-        $form->select('product_category_id', __("Product Category"))->options(Category::all()->pluck('name_en', 'id'));
-
-        $form->text('seo_title_az', __('Seo title az'));
-        $form->textarea('seo_desc_az', __('Seo desc az'));
-        $form->text('seo_title_en', __('Seo title en'));
-        $form->textarea('seo_desc_en', __('Seo desc en'));
-        $form->text('seo_title_ru', __('Seo title ru'));
-        $form->textarea('seo_desc_ru', __('Seo desc ru'));
-        $form->text('title_az', __('Title az'));
-        $form->text('slug_az', __('Slug az'));
-        $form->textarea('text_az', __('Text az'));
-        $form->text('title_en', __('Title en'));
-        $form->text('slug_en', __('Slug en'));
-        $form->textarea('text_en', __('Text en'));
-        $form->text('title_ru', __('Title ru'));
-        $form->text('slug_ru', __('Slug ru'));
-        $form->textarea('text_ru', __('Text ru'));
-        $form->image('image', __('Image'));
-        $form->switch('active', __('Active'))->default(1);
+        $form->tab('Banner', function ($form) {
+            $form->text('banner_title_az', __('Banner title az'));
+            $form->text('banner_title_en', __('Banner title en'));
+            $form->text('banner_title_ru', __('Banner title ru'));
+            $form->textarea('banner_desc_az', __('Banner desc az'));
+            $form->textarea('banner_desc_en', __('Banner desc en'));
+            $form->textarea('banner_desc_ru', __('Banner desc ru'));
+            $form->image('banner_image', __('Banner image'));
+            $form->text('banner_link', __('Banner link'));
+        });
 
         return $form;
     }

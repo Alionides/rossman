@@ -72,6 +72,9 @@ class BlogController extends Controller
             ];
         });
 
+        $banner_title = 'banner_title_' . $acceptLanguage;
+        $banner_desc = 'banner_desc_' . $acceptLanguage;
+
         return response()->json([
             'category' => [
                 'special_product_slug' => $relatedProducts,
@@ -82,6 +85,10 @@ class BlogController extends Controller
                 'text' => $category['text_' . $acceptLanguage],
                 'slug' => $category[$slugColumn],
                 'image' => $category->image,
+                'banner_title' => $category->$banner_title,
+                'banner_desc' => $category->$banner_desc,
+                'banner_image' => url($category->banner_image),
+                'banner_link' => $category->banner_link
             ],
             'blog_items' => $localizedBlogItems,
             'pagination' => [
@@ -114,7 +121,6 @@ class BlogController extends Controller
 
         // Modify image URL
         $blogItem->image = url('uploads/' . $blogItem->image);
-
         // Localize fields
         $localizedBlogItem = [
             'special_product_slug' => $relatedProducts,
@@ -125,7 +131,6 @@ class BlogController extends Controller
             'slug' => $blogItem['slug_' . $acceptLanguage],
             'text' => $blogItem['text_' . $acceptLanguage],
             'image' => $blogItem->image,
-            'active' => $blogItem->active,
         ];
 
         return response($localizedBlogItem);
