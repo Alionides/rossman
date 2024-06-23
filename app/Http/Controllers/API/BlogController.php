@@ -88,7 +88,7 @@ class BlogController extends Controller
                 'banner_desc' => $category->$banner_desc,
                 'banner_image' => url($category->banner_image),
                 'banner_button' => $category->{'banner_button_'. $acceptLanguage},
-                'banner_link' => $category->banner_linkgit s
+                'banner_link' => $category->banner_link
             ],
             'blog_items' => $localizedBlogItems,
             'pagination' => [
