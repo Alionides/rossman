@@ -13,21 +13,20 @@ class BlogController extends Controller
 
         $acceptLanguage = $request->header('Accept-Language');
 
-        $categories = BlogCategory::get([
-            'id',
-            'seo_title_' . $acceptLanguage,
-            'seo_desc_' . $acceptLanguage,
-            'title_' . $acceptLanguage,
-            'text_' . $acceptLanguage,
-            'slug_az',
-            'slug_en',
-            'slug_ru',
-            'image',
-        ]);
+        $categories = BlogCategory::where('active',true)->get();
 
-        $categories = $categories->map(function ($category) {
-            $category->image = url('uploads/' . $category->image);
-            return $category;
+        $categories = $categories->map(function ($category) use($acceptLanguage) {
+            return [
+                'id' => $category->id,
+                'seo_title' => $category->{'seo_title_'. $acceptLanguage},
+                'seo_desc' => $category->{'seo_desc_'. $acceptLanguage},
+                'title' => $category->{'title_'. $acceptLanguage},
+                'text' => $category->{'text_'. $acceptLanguage},
+                'slug_az' => $category->slug_az,
+                'slug_en' => $category->slug_en,
+                'slug_ru' => $category->slug_ru,
+                'image' => url('uploads/' . $category->image)
+            ];
         });
 
         return response($categories);
@@ -88,7 +87,8 @@ class BlogController extends Controller
                 'banner_title' => $category->$banner_title,
                 'banner_desc' => $category->$banner_desc,
                 'banner_image' => url($category->banner_image),
-                'banner_link' => $category->banner_link
+                'banner_button' => $category->{'banner_button_'. $acceptLanguage},
+                'banner_link' => $category->banner_linkgit s
             ],
             'blog_items' => $localizedBlogItems,
             'pagination' => [
@@ -111,7 +111,21 @@ class BlogController extends Controller
 
         // Fetch the blog item based on the slug
         $blogItem = BlogItem::where($slugColumn, $slug)->where('active', 1)->first();
-
+        $relatedItems = BlogItem::where('blog_category_id', $blogItem->blog_category_id)
+            ->where('id', '!=', $blogItem->id)
+            ->where('active', 1)
+            ->get()
+            ->map(function($item) use ($acceptLanguage) {
+                return [
+                    'id' => $item->id,
+                    'seo_title' => $item['seo_title_' . $acceptLanguage],
+                    'seo_desc' => $item['seo_desc_' . $acceptLanguage],
+                    'title' => $item['title_' . $acceptLanguage],
+                    'slug' => $item['slug_' . $acceptLanguage],
+                    'text' => $item['text_' . $acceptLanguage],
+                    'image' => url('uploads/' . $item->image),
+                ];
+            });
         $relatedProductSlug = 'slug_' . $acceptLanguage;
         $relatedProducts = $blogItem->blogCategory->productCategory->$relatedProductSlug;
 
@@ -128,9 +142,13 @@ class BlogController extends Controller
             'seo_title' => $blogItem['seo_title_' . $acceptLanguage],
             'seo_desc' => $blogItem['seo_desc_' . $acceptLanguage],
             'title' => $blogItem['title_' . $acceptLanguage],
-            'slug' => $blogItem['slug_' . $acceptLanguage],
+//            'slug' => $blogItem['slug_' . $acceptLanguage],
+            'slug_az' => $blogItem->slug_az,
+            'slug_en' => $blogItem->slug_en,
+            'slug_ru' => $blogItem->slug_ru,
             'text' => $blogItem['text_' . $acceptLanguage],
             'image' => $blogItem->image,
+            'related_items' => $relatedItems,
         ];
 
         return response($localizedBlogItem);

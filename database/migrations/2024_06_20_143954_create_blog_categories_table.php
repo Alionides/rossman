@@ -45,6 +45,9 @@ return new class extends Migration
             $table->text('banner_desc_en')->nullable();
             $table->text('banner_desc_ru')->nullable();
             $table->text('banner_image')->nullable();
+            $table->string('banner_button_az')->nullable();
+            $table->string('banner_button_en')->nullable();
+            $table->string('banner_button_ru')->nullable();
             $table->string('banner_link')->nullable();
 
             $table->boolean('active')->default(1);

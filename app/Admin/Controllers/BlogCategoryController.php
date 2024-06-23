@@ -124,6 +124,9 @@ class BlogCategoryController extends AdminController
             $form->textarea('banner_desc_en', __('Banner desc en'));
             $form->textarea('banner_desc_ru', __('Banner desc ru'));
             $form->image('banner_image', __('Banner image'));
+            $form->text('banner_button_az', __('Banner button az'));
+            $form->text('banner_button_en', __('Banner button en'));
+            $form->text('banner_button_ru', __('Banner button ru'));
             $form->text('banner_link', __('Banner link'));
         });
 
