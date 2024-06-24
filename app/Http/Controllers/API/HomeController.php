@@ -26,7 +26,7 @@ class HomeController extends Controller
 
         $home_data = [
             'seo_title' => $home->{'seo_title_' . $acceptLanguage},
-            'seo_desc_az' => $home->{'seo_desc_' . $acceptLanguage},
+            'seo_desc' => $home->{'seo_desc_' . $acceptLanguage},
             'page_name' => $home->{'page_name_' . $acceptLanguage},
             'page_title' => $home->{'page_title_' . $acceptLanguage},
             'page_desc' => $home->{'page_desc_' . $acceptLanguage},
