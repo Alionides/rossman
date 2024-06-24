@@ -56,6 +56,7 @@ class BlogController extends Controller
             ->paginate($perPage, ['*'], 'page', $page);
 
         $category->image = url('uploads/' . $category->image);
+        $category->banner_image = url('uploads/' . $category->banner_image);
 
         $localizedBlogItems = $blogItems->map(function ($item) use ($acceptLanguage) {
             $item->image = url('uploads/' . $item->image);
@@ -86,7 +87,7 @@ class BlogController extends Controller
                 'image' => $category->image,
                 'banner_title' => $category->$banner_title,
                 'banner_desc' => $category->$banner_desc,
-                'banner_image' => url($category->banner_image),
+                'banner_image' => $category->banner_image,
                 'banner_button' => $category->{'banner_button_'. $acceptLanguage},
                 'banner_link' => $category->banner_link
             ],

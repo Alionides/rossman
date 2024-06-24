@@ -107,6 +107,8 @@ class ProductController extends AdminController
         $form = new Form(new Product());
 //        $form->number('category_id', __('Category id'));
         $form->select('category_id', __("Category id"))->options(Category::all()->pluck('name_en', 'id'));
+        $form->switch('special', __('Special Product'))->default(1);
+        $form->switch('popular', __('Popular Product'))->default(1);
         $form->text('code', __('Code'));
         $form->text('barcode', __('Barcode'));
         $form->decimal('listPrice', __('ListPrice'));

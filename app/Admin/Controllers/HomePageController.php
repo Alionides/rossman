@@ -115,9 +115,9 @@ class HomePageController extends AdminController
                 $form->text('title_az');
                 $form->text('title_en');
                 $form->text('title_ru');
-                $form->text('desc_az');
-                $form->text('desc_en');
-                $form->text('desc_ru');
+                $form->textarea('desc_az');
+                $form->textarea('desc_en');
+                $form->textarea('desc_ru');
                 $form->image('image_first', __('First image'));
                 $form->image('image_second', __('Second image'));
 //                $form->switch('active', __('Active'))->default(1);

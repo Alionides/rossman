@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AboutController;
 use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\API\NavigationController;
 use App\Http\Controllers\API\Redis\CategoryController as RedisCategoryController;
 use App\Http\Controllers\API\ProductController;
@@ -34,9 +35,14 @@ Route::get('category', [CategoryController::class, "category"])->name('category'
 Route::get('redis/category', [RedisCategoryController::class, "category"])->name('categoryR');
 
 Route::get('product', [ProductController::class, "productDetail"])->name('productDetail');
+
+Route::get('productPopular', [ProductController::class, "productPopular"])->name('productPopular');
+Route::get('productSpecial', [ProductController::class, "productSpecial"])->name('productSpecial');
 //Route::get('productsRedis', [ProductController::class, "productsRedis"])->name('productsRedis');
 
 Route::get('about', [AboutController::class, "about"])->name('about');
+
+Route::get('home', [HomeController::class, "home"])->name('home');
 
 Route::get('navigation', [NavigationController::class, "navigation"])->name('navigation');
 
