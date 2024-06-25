@@ -7,6 +7,7 @@ use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\API\NavigationController;
 use App\Http\Controllers\API\Redis\CategoryController as RedisCategoryController;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\SpecialController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,13 +37,17 @@ Route::get('redis/category', [RedisCategoryController::class, "category"])->name
 
 Route::get('product', [ProductController::class, "productDetail"])->name('productDetail');
 
+Route::get('productNewest', [ProductController::class, "productNewest"])->name('productNewest');
 Route::get('productPopular', [ProductController::class, "productPopular"])->name('productPopular');
 Route::get('productSpecial', [ProductController::class, "productSpecial"])->name('productSpecial');
+Route::get('productSpecialPage', [ProductController::class, "productSpecialPage"])->name('productSpecialPage');
 //Route::get('productsRedis', [ProductController::class, "productsRedis"])->name('productsRedis');
 
 Route::get('about', [AboutController::class, "about"])->name('about');
 
 Route::get('home', [HomeController::class, "home"])->name('home');
+
+Route::get('special', [SpecialController::class, "special"])->name('special');
 
 Route::get('navigation', [NavigationController::class, "navigation"])->name('navigation');
 

@@ -9,6 +9,50 @@ use Illuminate\Support\Facades\Redis;
 
 class ProductController extends Controller
 {
+    public function productNewest(Request $request){
+        $acceptLanguage = $request->header('Accept-Language', 'az');
+
+        $products = Product::where('active', true)
+            ->orderBy('updated_at', 'desc')
+            ->limit(24)
+            ->get()
+            ->map(function ($product) use ($acceptLanguage){
+
+            // parse json multiple images
+
+            $images = $product->images;
+            if (is_array($images)) {
+                $images = array_map(function ($image) {
+                    return url('uploads/' . $image);
+                }, $images);
+
+                $product->images = $images;
+            }
+            return [
+                'id' => $product->id,
+                'category_id' => $product->category_id,
+                'code' => $product->code,
+                'barcode' => $product->barcode,
+                'listPrice' => $product->listPrice,
+                'salePrice' => $product->salePrice,
+                'name' => $product->{'name_' . $acceptLanguage},
+//                'slug' => $product->$slugColumn,
+                'slug_az' => $product->slug_az,
+                'slug_en' => $product->slug_en,
+                'slug_ru' => $product->slug_ru,
+                'text' => $product->{'text_' . $acceptLanguage},
+                'images' => $product->images,
+                'markCode' => $product->markCode,
+                'markName' => $product->markName,
+                'active' => $product->active,
+                'created_at' => $product->created_at,
+                'updated_at' => $product->updated_at,
+            ];
+        });
+
+        return response($products);
+    }
+
     public function productPopular(Request $request){
         $acceptLanguage = $request->header('Accept-Language', 'az');
 
@@ -51,6 +95,7 @@ class ProductController extends Controller
 
         return response($products);
     }
+
     public function productSpecial(Request $request){
         $acceptLanguage = $request->header('Accept-Language', 'az');
 
