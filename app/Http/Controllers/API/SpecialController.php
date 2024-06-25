@@ -26,7 +26,8 @@ class SpecialController extends Controller
             ->paginate(32);
 
         // Transform the collection to format the product data
-        $products->getCollection()->transform(function ($product) use ($acceptLanguage) {
+//        $products->getCollection()->transform(function ($product) use ($acceptLanguage) {
+        $items = $products->map(function ($product) use ($acceptLanguage) {
             // Parse json multiple images
             $images = $product->images;
             if (is_array($images)) {
@@ -59,7 +60,15 @@ class SpecialController extends Controller
 
         return response()->json([
             'special_page' => $special_data,
-            'special_products' => $products,
+            'products' => $items,
+            'pagination' => [
+                'total' => $products->total(),
+                'per_page' => $products->perPage(),
+                'current_page' => $products->currentPage(),
+                'last_page' => $products->lastPage(),
+                'next_page_url' => $products->nextPageUrl(),
+                'prev_page_url' => $products->previousPageUrl(),
+            ]
         ]);
     }
 }
