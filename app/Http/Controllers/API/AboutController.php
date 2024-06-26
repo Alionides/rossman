@@ -15,7 +15,7 @@ class AboutController extends Controller
 //        $slug = $request->input('slug');
 //        $slug = filter_var($slug, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $data = About::find(1);
+        $data = About::first();
 
         $data->sec_1_image = $data->sec_1_image ? url('uploads/' . $data->sec_1_image) : null;
         $data->sec_2_image = $data->sec_2_image ? url('uploads/' . $data->sec_2_image) : null;
