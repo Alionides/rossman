@@ -7,6 +7,7 @@ use App\Admin\Controllers\BlogItemController;
 use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\HomePageController;
 use App\Admin\Controllers\NavigationController;
+use App\Admin\Controllers\NewsItemController;
 use App\Admin\Controllers\ProductController;
 use App\Admin\Controllers\SpecialController;
 use Illuminate\Routing\Router;
@@ -32,5 +33,6 @@ Route::group([
     $router->resource('blogs', BlogController::class);
     $router->resource('blog-items', BlogItemController::class);
     $router->resource('blog-categories', BlogCategoryController::class);
+    $router->resource('news-items', NewsItemController::class);
 
 });

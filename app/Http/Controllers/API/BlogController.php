@@ -34,7 +34,7 @@ class BlogController extends Controller
 
     public function blogCategoryDetail(Request $request)
     {
-        $acceptLanguage = $request->header('Accept-Language');
+        $acceptLanguage = $request->header('Accept-Language', 'az');
         $slugColumn = 'slug_' . $acceptLanguage;
         $slug = $request->input('slug');
         $slug = filter_var($slug, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -108,7 +108,7 @@ class BlogController extends Controller
 
     public function blogItemDetail(Request $request)
     {
-        $acceptLanguage = $request->header('Accept-Language');
+        $acceptLanguage = $request->header('Accept-Language', 'az');
         $slugColumn = 'slug_' . $acceptLanguage;
         $slug = $request->input('slug');
         $slug = filter_var($slug, FILTER_SANITIZE_FULL_SPECIAL_CHARS);

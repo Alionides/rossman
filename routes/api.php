@@ -5,6 +5,7 @@ use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\API\NavigationController;
+use App\Http\Controllers\API\NewsItemController;
 use App\Http\Controllers\API\Redis\CategoryController as RedisCategoryController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\SpecialController;
@@ -54,3 +55,8 @@ Route::get('navigation', [NavigationController::class, "navigation"])->name('nav
 Route::get('blogCategory', [BlogController::class, "blogCategory"])->name('blogCategory');
 Route::get('blogCategoryDetail', [BlogController::class, "blogCategoryDetail"])->name('blogCategoryDetail');
 Route::get('blogItemDetail', [BlogController::class, "blogItemDetail"])->name('blogItemDetail');
+
+Route::get('newsItem', [NewsItemController::class, "newsItem"])->name('newsItem');
+Route::get('newsItemDetail', [NewsItemController::class, "newsItemDetail"])->name('newsItemDetail');
+
+
