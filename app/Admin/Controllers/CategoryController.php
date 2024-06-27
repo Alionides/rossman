@@ -41,6 +41,10 @@ class CategoryController extends AdminController
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
+        $grid->filter(function($filter){
+            $filter->like('slug_en', 'slug_en');
+        });
+
         return $grid;
     }
 
