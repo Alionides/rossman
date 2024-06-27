@@ -140,7 +140,7 @@ class AboutController extends Controller
             'top_banner_title' => $data->$top_banner_title,
             'top_banner_desc' => $data->$top_banner_desc,
             'top_banner_image' => url('uploads/'.$data->top_banner_image),
-            'top_banner_link' => $data->banner_link,
+            'top_banner_link' => $data->top_banner_link,
             'banner_title' => $data->$banner_title,
             'banner_desc' => $data->$banner_desc,
             'banner_image' => url($data->banner_image),

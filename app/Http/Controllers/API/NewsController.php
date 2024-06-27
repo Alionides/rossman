@@ -39,7 +39,7 @@ class NewsController extends Controller
             'top_banner_title' => $newsPage->{'top_banner_title_' . $acceptLanguage},
             'top_banner_desc' => $newsPage->{'top_banner_desc_' . $acceptLanguage},
             'top_banner_image' => url('uploads/'.$newsPage->top_banner_image),
-            'top_banner_link' => $newsPage->banner_link,
+            'top_banner_link' => $newsPage->top_banner_link,
         ];
 
         return response()->json([
