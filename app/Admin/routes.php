@@ -5,6 +5,7 @@ use App\Admin\Controllers\BlogCategoryController;
 use App\Admin\Controllers\BlogController;
 use App\Admin\Controllers\BlogItemController;
 use App\Admin\Controllers\CategoryController;
+use App\Admin\Controllers\ContactController;
 use App\Admin\Controllers\HomePageController;
 use App\Admin\Controllers\NavigationController;
 use App\Admin\Controllers\NewsController;
@@ -36,5 +37,6 @@ Route::group([
     $router->resource('blog-categories', BlogCategoryController::class);
     $router->resource('news', NewsController::class);
     $router->resource('news-items', NewsItemController::class);
+    $router->resource('contacts', ContactController::class);
 
 });
