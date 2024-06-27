@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AboutController;
 use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ContactController;
+use App\Http\Controllers\API\ContactFormController;
 use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\API\NavigationController;
 use App\Http\Controllers\API\NewsController;
@@ -62,5 +63,6 @@ Route::get('news', [NewsController::class, "news"])->name('news');
 Route::get('newsItemDetail', [NewsItemController::class, "newsItemDetail"])->name('newsItemDetail');
 
 Route::get('contact', [ContactController::class, "contact"])->name('contact');
+Route::post('contactForm', [ContactFormController::class, "contactForm"])->name('contactForm');
 
 
