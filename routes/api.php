@@ -69,3 +69,5 @@ Route::post('contactForm', [ContactFormController::class, "contactForm"])->name(
 
 Route::get('search', [SearchController::class, "search"]);
 
+
+
