@@ -203,9 +203,7 @@ class ProductController extends Controller
         while ($category) {
             $breadcrumb[] = [
                 'title' => $category->$nameColumn,
-                'slug_az' => $category->slug_az,
-                'slug_en' => $category->slug_en,
-                'slug_ru' => $category->slug_ru,
+                'slug_az' => $category->$slugColumn
             ];
 
             $category = $category->parent;
