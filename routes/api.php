@@ -11,7 +11,9 @@ use App\Http\Controllers\API\NewsController;
 use App\Http\Controllers\API\NewsItemController;
 use App\Http\Controllers\API\Redis\CategoryController as RedisCategoryController;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\SearchController;
 use App\Http\Controllers\API\SpecialController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -65,4 +67,5 @@ Route::get('newsItemDetail', [NewsItemController::class, "newsItemDetail"])->nam
 Route::get('contact', [ContactController::class, "contact"])->name('contact');
 Route::post('contactForm', [ContactFormController::class, "contactForm"])->name('contactForm');
 
+Route::get('search', [SearchController::class, "search"]);
 
