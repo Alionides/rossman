@@ -95,27 +95,31 @@ class BlogItemController extends AdminController
     protected function form()
     {
         $form = new Form(new BlogItem());
+        $form->tab('General', function ($form) {
+            $form->select('blog_category_id', __("Blog Category"))->options(BlogCategory::all()->pluck('title_az', 'id'));
+            $form->text('title_az', __('Title az'));
+            $form->ckeditor('text_az', __('Text az'));
+            $form->text('title_en', __('Title en'));
+            $form->ckeditor('text_en', __('Text en'));
+            $form->text('title_ru', __('Title ru'));
+            $form->ckeditor('text_ru', __('Text ru'));
+            $form->image('image', __('Image'));
+            $form->text('slug_az', __('Slug az'));
+            $form->text('slug_en', __('Slug en'));
+            $form->text('slug_ru', __('Slug ru'));
+            $form->switch('active', __('Active'))->default(1);
 
-        $form->select('blog_category_id', __("Blog Category"))->options(BlogCategory::all()->pluck('title_az', 'id'));
+        });
 
-        $form->text('seo_title_az', __('Seo title az'));
-        $form->textarea('seo_desc_az', __('Seo desc az'));
-        $form->text('seo_title_en', __('Seo title en'));
-        $form->textarea('seo_desc_en', __('Seo desc en'));
-        $form->text('seo_title_ru', __('Seo title ru'));
-        $form->textarea('seo_desc_ru', __('Seo desc ru'));
-        $form->text('title_az', __('Title az'));
-        $form->text('slug_az', __('Slug az'));
-        $form->textarea('text_az', __('Text az'));
-        $form->text('title_en', __('Title en'));
-        $form->text('slug_en', __('Slug en'));
-        $form->textarea('text_en', __('Text en'));
-        $form->text('title_ru', __('Title ru'));
-        $form->text('slug_ru', __('Slug ru'));
-        $form->textarea('text_ru', __('Text ru'));
-        $form->image('image', __('Image'));
-        $form->switch('active', __('Active'))->default(1);
+        $form->tab('SEO', function ($form) {
+            $form->text('seo_title_az', __('Seo title az'));
+            $form->textarea('seo_desc_az', __('Seo desc az'));
+            $form->text('seo_title_en', __('Seo title en'));
+            $form->textarea('seo_desc_en', __('Seo desc en'));
+            $form->text('seo_title_ru', __('Seo title ru'));
+            $form->textarea('seo_desc_ru', __('Seo desc ru'));
+        });
 
-        return $form;
+            return $form;
     }
 }
