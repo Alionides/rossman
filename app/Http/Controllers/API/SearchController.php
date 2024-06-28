@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,7 +17,7 @@ class SearchController extends Controller
         return response()->json(['status' => 'error', 'message' => 'Keyword not found.'], 400);
     }
     $column = 'name_' . $acceptLanguage;
-        try {
+//        try {
             $products = Product::where($column, 'like', "%$keyword%")->paginate(32);
             $items = $products->map(function ($product) use ($acceptLanguage) {
                 $images = $product->images;
@@ -60,11 +61,11 @@ class SearchController extends Controller
                 ],
                 'status' => 'true'
             ],200);
-        } catch (\Exception $e) {
-            return response()->json([
-                'status' => 'error',
-                'message' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
+//        } catch (\Exception $e) {
+//            return response()->json([
+//                'status' => 'error',
+//                'message' => $e->getMessage()
+//            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+//        }
     }
 }
