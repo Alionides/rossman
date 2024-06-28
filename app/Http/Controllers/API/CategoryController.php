@@ -164,6 +164,7 @@ class CategoryController extends Controller
             'parent_id' => $category->parent_id,
             'icon' => $category->icon,
             'active' => $category->active,
+            'breadcrumb' => $this->buildBreadcrumb($category, $nameColumn, $slugColumn),
             'subCategories' => $category->allChildren->map(function ($child) use ($nameColumn, $slugColumn) {
 //                return $this->formatCategory($child, $nameColumn); this will fetch all recursively
                 return [
@@ -180,6 +181,23 @@ class CategoryController extends Controller
                 ];
             }),
         ];
+    }
+
+    private function buildBreadcrumb($category, $nameColumn, $slugColumn)
+    {
+        $breadcrumb = [];
+
+        while ($category) {
+            $breadcrumb[] = [
+                'title' => $category->$nameColumn,
+                'slug_az' => $category->slug_az,
+                'slug_en' => $category->slug_en,
+            ];
+
+            $category = $category->parent;
+        }
+
+        return array_reverse($breadcrumb);
     }
 
     public function category(Category $category, Request $request)

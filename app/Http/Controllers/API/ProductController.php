@@ -159,6 +159,18 @@ class ProductController extends Controller
 
             $product->images = $images;
         }
+
+        // Build breadcrumb for the category
+        $category = $product->category; // Assuming you have a relationship defined in the Product model
+        $breadcrumb = $this->buildBreadcrumb($category, $nameColumn, $slugColumn);
+
+        // Append product's title and slugs to the breadcrumb
+        $breadcrumb[] = [
+            'title' => $product->$nameColumn,
+            'slug_az' => $product->slug_az,
+            'slug_en' => $product->slug_en,
+        ];
+
         $productDetails = [
             'id' => $product->id,
             'category_id' => $product->category_id,
@@ -176,11 +188,30 @@ class ProductController extends Controller
             'markCode' => $product->markCode,
             'markName' => $product->markName,
             'active' => $product->active,
+            'breadcrumb' => $breadcrumb,
             'created_at' => $product->created_at,
             'updated_at' => $product->updated_at,
         ];
 
         return response($productDetails);
+    }
+
+    private function buildBreadcrumb($category, $nameColumn, $slugColumn)
+    {
+        $breadcrumb = [];
+
+        while ($category) {
+            $breadcrumb[] = [
+                'title' => $category->$nameColumn,
+                'slug_az' => $category->slug_az,
+                'slug_en' => $category->slug_en,
+                'slug_ru' => $category->slug_ru,
+            ];
+
+            $category = $category->parent;
+        }
+
+        return array_reverse($breadcrumb);
     }
 
 }
