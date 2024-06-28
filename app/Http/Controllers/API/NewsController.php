@@ -44,6 +44,7 @@ class NewsController extends Controller
 
         return response()->json([
             'news' => $newsPageData,
+            'links' => $newsPage->links,
             'news_items' => $newsItems,
             'pagination' => [
                 'total' => $news->total(),

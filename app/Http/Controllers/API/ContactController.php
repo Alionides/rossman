@@ -21,6 +21,7 @@ class ContactController extends Controller
             'page_title' => $contactPage->{'page_title_' . $acceptLanguage},
             'page_desc' => $contactPage->{'page_desc_' . $acceptLanguage},
             'slug' => $contactPage->slug,
+            'links' => $contactPage->links,
             'top_banner_title' => $contactPage->{'top_banner_title_' . $acceptLanguage},
             'top_banner_desc' => $contactPage->{'top_banner_desc_' . $acceptLanguage},
             'top_banner_image' => url('uploads/'.$contactPage->top_banner_image),

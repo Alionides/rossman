@@ -34,6 +34,8 @@ return new class extends Migration
             $table->string('page_title_ru')->nullable();
             $table->text('page_desc_ru')->nullable();
 
+            $table->text('links')->nullable();
+
             $table->text('top_banner_title_az')->nullable();
             $table->text('top_banner_title_en')->nullable();
             $table->text('top_banner_title_ru')->nullable();
