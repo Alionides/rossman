@@ -167,6 +167,13 @@ class ContactController extends AdminController
             $form->text('page_title_ru', __('Page title ru'));
             $form->textarea('page_desc_ru', __('Page desc ru'));
             $form->text('slug', __('Slug'));
+            $form->table('links', function ($table) {
+                $table->text('title_az')->icon("icon-key");
+                $table->text('title_en')->icon("icon-key");
+                $table->text('title_ru')->icon("icon-key");
+                $table->text('slug');
+                $table->switch('active', __('Active'))->default(1);
+            });
         });
 
         $form->tab('SEO', function ($form) {
@@ -178,7 +185,7 @@ class ContactController extends AdminController
             $form->textarea('seo_desc_ru', __('Seo desc ru'));
         });
 
-        $form->tab('About Page Info', function ($form) {
+        $form->tab('Contact Page Info', function ($form) {
             $form->text('central_office_title_az', __('Central office title az'));
             $form->text('central_office_title_en', __('Central office title en'));
             $form->text('central_office_title_ru', __('Central office title ru'));
@@ -216,7 +223,11 @@ class ContactController extends AdminController
             $form->image('top_banner_image', __('Top Banner image'));
             $form->text('top_banner_link', __('Top Banner link'));
         });
-
+        $form->saving(function (Form $form) {
+            if (isset($form->links)) {
+                $form->links = array_values($form->links);
+            }
+        });
         return $form;
     }
 }
