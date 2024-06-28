@@ -3,22 +3,19 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Models\Brand;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class SearchController extends Controller
 {
     public function search(Request $request){
-        $acceptLanguage = $request->header('Accept-Language', 'az');
-
+    $acceptLanguage = $request->header('Accept-Language', 'az');
     $keyword = $request->query('q');
     if($keyword ==''){
         return response()->json(['status' => 'error', 'message' => 'Keyword not found.'], 400);
     }
-
-
     $column = 'name_' . $acceptLanguage;
-
         try {
             $products = Product::where($column, 'like', "%$keyword%")->paginate(32);
             $items = $products->map(function ($product) use ($acceptLanguage) {

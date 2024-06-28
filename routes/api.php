@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AboutController;
 use App\Http\Controllers\API\BlogController;
+use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ContactController;
 use App\Http\Controllers\API\ContactFormController;
@@ -68,4 +69,7 @@ Route::get('contact', [ContactController::class, "contact"])->name('contact');
 Route::post('contactForm', [ContactFormController::class, "contactForm"])->name('contactForm');
 
 Route::get('search', [SearchController::class, "search"]);
+
+Route::get('brands', [BrandController::class, "brandsPages"]);
+Route::get('brands-letter', [BrandController::class, "brandsStartingWithLetters"]);
 
