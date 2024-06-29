@@ -1,6 +1,7 @@
 <?php
 
 use App\Admin\Controllers\AboutController;
+use App\Admin\Controllers\BannerController;
 use App\Admin\Controllers\BlogCategoryController;
 use App\Admin\Controllers\BlogController;
 use App\Admin\Controllers\BlogItemController;
@@ -12,6 +13,7 @@ use App\Admin\Controllers\NavigationController;
 use App\Admin\Controllers\NewsController;
 use App\Admin\Controllers\NewsItemController;
 use App\Admin\Controllers\ProductController;
+use App\Admin\Controllers\SliderController;
 use App\Admin\Controllers\SpecialController;
 use Illuminate\Routing\Router;
 use App\Admin\Controllers\BrandController;
@@ -40,5 +42,7 @@ Route::group([
     $router->resource('news-items', NewsItemController::class);
     $router->resource('contacts', ContactController::class);
     $router->resource('contact-forms', ContactFormController::class);
+    $router->resource('sliders', SliderController::class);
+    $router->resource('banners', BannerController::class);
 
 });

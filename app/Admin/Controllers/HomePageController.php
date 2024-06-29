@@ -92,12 +92,6 @@ class HomePageController extends AdminController
     {
         $form = new Form(new Home());
         $form->tab('General', function ($form) {
-            $form->text('seo_title_az', __('Seo title az'));
-            $form->textarea('seo_desc_az', __('Seo desc az'));
-            $form->text('seo_title_en', __('Seo title en'));
-            $form->textarea('seo_desc_en', __('Seo desc en'));
-            $form->text('seo_title_ru', __('Seo title ru'));
-            $form->textarea('seo_desc_ru', __('Seo desc ru'));
             $form->text('page_name_az', __('Page name az'));
             $form->text('page_title_az', __('Page title az'));
             $form->textarea('page_desc_az', __('Page desc az'));
@@ -110,41 +104,50 @@ class HomePageController extends AdminController
             $form->text('slug', __('Slug'));
         });
 
-        $form->tab('Slider', function ($form) {
-            $form->morphMany('sliders', function (Form\NestedForm $form) {
-                $form->text('title_az');
-                $form->text('title_en');
-                $form->text('title_ru');
-                $form->textarea('desc_az');
-                $form->textarea('desc_en');
-                $form->textarea('desc_ru');
-                $form->image('image_first', __('First image'));
-                $form->image('image_second', __('Second image'));
-//                $form->switch('active', __('Active'))->default(1);
-                $form->radio('active', __('Active'))->options([
-                    1 => 'Active',
-                    0 => 'Inactive',
-                ])->default(1);
-            });
+        $form->tab('SEO', function ($form) {
+            $form->text('seo_title_az', 'Seo Title az');
+            $form->textarea('seo_desc_az', __('Seo desc az'));
+            $form->text('seo_title_en', __('Seo Title en'));
+            $form->textarea('seo_desc_en', __('Seo desc en'));
+            $form->text('seo_title_ru', __('Seo Title ru'));
+            $form->textarea('seo_desc_ru', __('Seo desc ru'));
         });
 
-        $form->tab('Banner', function ($form) {
-            $form->morphMany('banners', function (Form\NestedForm $form) {
-                $form->select('type', 'Banner Type')->options(BannerType::getLabels());
-                $form->image('image_az', __('image_az'));
-                $form->image('image_mobile_az', __('image_mobile_az'));
-                $form->image('image_en', __('image_en'));
-                $form->image('image_mobile_en', __('image_mobile_en'));
-                $form->image('image_ru', __('image_ru'));
-                $form->image('image_mobile_ru', __('image_mobile_ru'));
-                $form->text('link', __('Link'));
-//                $form->switch('active', __('Active'))->default(1);
-                $form->radio('active', __('Active'))->options([
-                    1 => 'Active',
-                    0 => 'Inactive',
-                ])->default(1);
-            });
-        });
+//        $form->tab('Slider', function ($form) {
+//            $form->morphMany('sliders', function (Form\NestedForm $form) {
+//                $form->text('title_az');
+//                $form->text('title_en');
+//                $form->text('title_ru');
+//                $form->textarea('desc_az');
+//                $form->textarea('desc_en');
+//                $form->textarea('desc_ru');
+//                $form->image('image_first', __('First image'));
+//                $form->image('image_second', __('Second image'));
+////                $form->switch('active', __('Active'))->default(1);
+//                $form->radio('active', __('Active'))->options([
+//                    1 => 'Active',
+//                    0 => 'Inactive',
+//                ])->default(1);
+//            });
+//        });
+
+//        $form->tab('Banner', function ($form) {
+//            $form->morphMany('banners', function (Form\NestedForm $form) {
+//                $form->select('type', 'Banner Type')->options(BannerType::getLabels());
+//                $form->image('image_az', __('image_az'));
+//                $form->image('image_mobile_az', __('image_mobile_az'));
+//                $form->image('image_en', __('image_en'));
+//                $form->image('image_mobile_en', __('image_mobile_en'));
+//                $form->image('image_ru', __('image_ru'));
+//                $form->image('image_mobile_ru', __('image_mobile_ru'));
+//                $form->text('link', __('Link'));
+////                $form->switch('active', __('Active'))->default(1);
+//                $form->radio('active', __('Active'))->options([
+//                    1 => 'Active',
+//                    0 => 'Inactive',
+//                ])->default(1);
+//            });
+//        });
 
         return $form;
     }
