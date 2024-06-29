@@ -8,6 +8,7 @@ use App\Admin\Controllers\BlogItemController;
 use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\ContactController;
 use App\Admin\Controllers\ContactFormController;
+use App\Admin\Controllers\DynamicPageController;
 use App\Admin\Controllers\HomePageController;
 use App\Admin\Controllers\NavigationController;
 use App\Admin\Controllers\NewsController;
@@ -44,5 +45,6 @@ Route::group([
     $router->resource('contact-forms', ContactFormController::class);
     $router->resource('sliders', SliderController::class);
     $router->resource('banners', BannerController::class);
+    $router->resource('dynamic-pages', DynamicPageController::class);
 
 });

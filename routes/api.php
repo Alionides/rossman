@@ -6,6 +6,7 @@ use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ContactController;
 use App\Http\Controllers\API\ContactFormController;
+use App\Http\Controllers\API\DynamicPageController;
 use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\API\NavigationController;
 use App\Http\Controllers\API\NewsController;
@@ -72,4 +73,7 @@ Route::get('search', [SearchController::class, "search"]);
 
 Route::get('brands', [BrandController::class, "brandsPages"]);
 Route::get('brands-letter', [BrandController::class, "brandsStartingWithLetters"]);
+
+Route::get('dynamicPage', [DynamicPageController::class, "dynamicPage"])->name('dynamicPage');
+
 
