@@ -15,6 +15,7 @@ use App\Http\Controllers\API\NewsItemController;
 use App\Http\Controllers\API\Redis\CategoryController as RedisCategoryController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\SearchController;
+use App\Http\Controllers\API\ShopPageController;
 use App\Http\Controllers\API\SpecialController;
 
 use Illuminate\Http\Request;
@@ -76,5 +77,7 @@ Route::get('brandPage', [BrandPageController::class, "brandPage"])->name('brandP
 Route::get('brands-letter', [BrandController::class, "brandsStartingWithLetters"]);
 
 Route::get('dynamicPage', [DynamicPageController::class, "dynamicPage"])->name('dynamicPage');
+
+Route::get('shopPage', [ShopPageController::class, "shopPage"])->name('shopPage');
 
 

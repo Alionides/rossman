@@ -15,6 +15,8 @@ use App\Admin\Controllers\NavigationController;
 use App\Admin\Controllers\NewsController;
 use App\Admin\Controllers\NewsItemController;
 use App\Admin\Controllers\ProductController;
+use App\Admin\Controllers\ShopItemController;
+use App\Admin\Controllers\ShopPageController;
 use App\Admin\Controllers\SliderController;
 use App\Admin\Controllers\SpecialController;
 use Illuminate\Routing\Router;
@@ -48,5 +50,7 @@ Route::group([
     $router->resource('banners', BannerController::class);
     $router->resource('dynamic-pages', DynamicPageController::class);
     $router->resource('brand-pages', BrandPageController::class);
+    $router->resource('shop-pages', ShopPageController::class);
+    $router->resource('shop-items', ShopItemController::class);
 
 });

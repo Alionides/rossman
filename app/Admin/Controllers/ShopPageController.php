@@ -6,16 +6,16 @@ use OpenAdmin\Admin\Controllers\AdminController;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
-use \App\Models\BrandPage;
+use \App\Models\ShopPage;
 
-class BrandPageController extends AdminController
+class ShopPageController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'BrandPage';
+    protected $title = 'ShopPage';
 
     /**
      * Make a grid builder.
@@ -24,7 +24,7 @@ class BrandPageController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new BrandPage());
+        $grid = new Grid(new ShopPage());
 
         $grid->column('id', __('Id'));
         $grid->column('seo_title_az', __('Seo title az'));
@@ -42,6 +42,9 @@ class BrandPageController extends AdminController
         $grid->column('page_name_ru', __('Page name ru'));
         $grid->column('page_title_ru', __('Page title ru'));
         $grid->column('page_desc_ru', __('Page desc ru'));
+        $grid->column('slug', __('Slug'));
+        $grid->column('map', __('Map'));
+//        $grid->column('links', __('Links'));
         $grid->column('top_banner_title_az', __('Top banner title az'));
         $grid->column('top_banner_title_en', __('Top banner title en'));
         $grid->column('top_banner_title_ru', __('Top banner title ru'));
@@ -50,7 +53,6 @@ class BrandPageController extends AdminController
         $grid->column('top_banner_desc_ru', __('Top banner desc ru'));
         $grid->column('top_banner_image', __('Top banner image'));
         $grid->column('top_banner_link', __('Top banner link'));
-        $grid->column('slug', __('Slug'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -65,7 +67,7 @@ class BrandPageController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(BrandPage::findOrFail($id));
+        $show = new Show(ShopPage::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('seo_title_az', __('Seo title az'));
@@ -83,6 +85,9 @@ class BrandPageController extends AdminController
         $show->field('page_name_ru', __('Page name ru'));
         $show->field('page_title_ru', __('Page title ru'));
         $show->field('page_desc_ru', __('Page desc ru'));
+        $show->field('slug', __('Slug'));
+        $show->field('map', __('Map'));
+        $show->field('links', __('Links'));
         $show->field('top_banner_title_az', __('Top banner title az'));
         $show->field('top_banner_title_en', __('Top banner title en'));
         $show->field('top_banner_title_ru', __('Top banner title ru'));
@@ -91,7 +96,6 @@ class BrandPageController extends AdminController
         $show->field('top_banner_desc_ru', __('Top banner desc ru'));
         $show->field('top_banner_image', __('Top banner image'));
         $show->field('top_banner_link', __('Top banner link'));
-        $show->field('slug', __('Slug'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -105,8 +109,7 @@ class BrandPageController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new BrandPage());
-
+        $form = new Form(new ShopPage());
         $form->tab('General', function ($form) {
             $form->text('page_name_az', __('Page name az'));
             $form->text('page_title_az', __('Page title az'));
@@ -117,7 +120,15 @@ class BrandPageController extends AdminController
             $form->text('page_name_ru', __('Page name ru'));
             $form->text('page_title_ru', __('Page title ru'));
             $form->ckeditor('page_desc_ru', __('Page desc ru'));
-            $form->text('slug', __('Slug'));;
+            $form->textarea('map', __('Map'));
+            $form->text('slug', __('Slug'));
+            $form->table('links', function ($table) {
+                $table->text('title_az')->icon("icon-key");
+                $table->text('title_en')->icon("icon-key");
+                $table->text('title_ru')->icon("icon-key");
+                $table->text('slug');
+                $table->switch('active', __('Active'))->default(1);
+            });
         });
         $form->tab('SEO', function ($form) {
             $form->text('seo_title_az', __('Seo title az'));
@@ -137,6 +148,12 @@ class BrandPageController extends AdminController
             $form->textarea('top_banner_desc_ru', __('Top Banner desc ru'));
             $form->image('top_banner_image', __('Top Banner image'));
             $form->text('top_banner_link', __('Top Banner link'));
+        });
+
+        $form->saving(function (Form $form) {
+            if (isset($form->links)) {
+                $form->links = array_values($form->links);
+            }
         });
 
         return $form;
