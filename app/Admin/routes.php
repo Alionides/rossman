@@ -5,6 +5,7 @@ use App\Admin\Controllers\BannerController;
 use App\Admin\Controllers\BlogCategoryController;
 use App\Admin\Controllers\BlogController;
 use App\Admin\Controllers\BlogItemController;
+use App\Admin\Controllers\BrandPageController;
 use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\ContactController;
 use App\Admin\Controllers\ContactFormController;
@@ -46,5 +47,6 @@ Route::group([
     $router->resource('sliders', SliderController::class);
     $router->resource('banners', BannerController::class);
     $router->resource('dynamic-pages', DynamicPageController::class);
+    $router->resource('brand-pages', BrandPageController::class);
 
 });

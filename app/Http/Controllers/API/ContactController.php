@@ -39,9 +39,6 @@ class ContactController extends Controller
             'customer_support_address' => $contactPage->{'customer_support_address_' . $acceptLanguage},
             'customer_support_phone' => $contactPage->customer_support_phone,
             'customer_support_email' => $contactPage->customer_support_email,
-
-
-
         ];
 
         return response($contactPageData);
