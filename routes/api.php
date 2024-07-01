@@ -18,6 +18,8 @@ use App\Http\Controllers\API\SearchController;
 use App\Http\Controllers\API\ShopPageController;
 use App\Http\Controllers\API\SpecialController;
 
+use App\Http\Controllers\API\VacancyItemController;
+use App\Http\Controllers\API\VacancyPageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -79,5 +81,9 @@ Route::get('brands-letter', [BrandController::class, "brandsStartingWithLetters"
 Route::get('dynamicPage', [DynamicPageController::class, "dynamicPage"])->name('dynamicPage');
 
 Route::get('shopPage', [ShopPageController::class, "shopPage"])->name('shopPage');
+
+Route::get('vacancyPage', [VacancyPageController::class, "vacancyPage"])->name('vacancyPage');
+Route::get('vacancies', [VacancyPageController::class, "vacancies"])->name('vacancies');
+Route::get('vacancyItemDetail', [VacancyItemController::class, "vacancyItemDetail"])->name('vacancyItemDetail');
 
 

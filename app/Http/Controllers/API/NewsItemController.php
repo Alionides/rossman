@@ -8,39 +8,6 @@ use Illuminate\Http\Request;
 
 class NewsItemController extends Controller
 {
-//    public function newsItem(Request $request){
-//
-//        $acceptLanguage = $request->header('Accept-Language', 'az');
-//
-//        $news = NewsItem::where('active', true)->paginate(9);
-//        $newsItems = $news->map(function ($item) use ($acceptLanguage) {
-//            $item->image = url('uploads/' . $item->image);
-//            return [
-//                'id' => $item->id,
-//                'seo_title' => $item['seo_title_' . $acceptLanguage],
-//                'seo_desc' => $item['seo_desc_' . $acceptLanguage],
-//                'title' => $item['title_' . $acceptLanguage],
-//                'slug' => $item['slug_' . $acceptLanguage],
-//                'text' => $item['text_' . $acceptLanguage],
-//                'image' => $item->image,
-//                'active' => $item->active,
-//            ];
-//        });
-//
-//        return response()->json([
-//            'news_items' => $newsItems,
-//            'pagination' => [
-//                'total' => $news->total(),
-//                'per_page' => $news->perPage(),
-//                'current_page' => $news->currentPage(),
-//                'last_page' => $news->lastPage(),
-//                'next_page_url' => $news->nextPageUrl(),
-//                'prev_page_url' => $news->previousPageUrl(),
-//            ],
-//        ]);
-//
-//    }
-
     public function newsItemDetail(Request $request){
 
         $acceptLanguage = $request->header('Accept-Language', 'az');

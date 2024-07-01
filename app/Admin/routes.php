@@ -19,6 +19,10 @@ use App\Admin\Controllers\ShopItemController;
 use App\Admin\Controllers\ShopPageController;
 use App\Admin\Controllers\SliderController;
 use App\Admin\Controllers\SpecialController;
+use App\Admin\Controllers\VacancyAdvantageController;
+use App\Admin\Controllers\VacancyItemController;
+use App\Admin\Controllers\VacancyPageController;
+use App\Admin\Controllers\VacancySuccessController;
 use Illuminate\Routing\Router;
 use App\Admin\Controllers\BrandController;
 
@@ -52,5 +56,9 @@ Route::group([
     $router->resource('brand-pages', BrandPageController::class);
     $router->resource('shop-pages', ShopPageController::class);
     $router->resource('shop-items', ShopItemController::class);
+    $router->resource('vacancy-pages', VacancyPageController::class);
+    $router->resource('vacancy-items', VacancyItemController::class);
+    $router->resource('vacancy-advantages', VacancyAdvantageController::class);
+    $router->resource('vacancy-successes', VacancySuccessController::class);
 
 });
