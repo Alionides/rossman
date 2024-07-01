@@ -94,7 +94,9 @@ class ShopItemController extends AdminController
             $form->text('open', __('Open Hour'));
             $form->text('close', __('Close Hour'));
 
-            $form->text('class', __('Class'));
+            $form->text('long', __('Longtitude'));
+            $form->text('lat', __('Latitude'));
+
             $form->switch('active', __('Active'))->default(1);
         });
         $form->tab('SEO', function ($form) {

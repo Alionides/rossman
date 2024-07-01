@@ -30,9 +30,8 @@ return new class extends Migration
             $table->text('address_ru')->nullable();
             $table->text('open')->nullable();
             $table->text('close')->nullable();
-
-
-            $table->text('class')->nullable();
+            $table->text('long')->nullable();
+            $table->text('lat')->nullable();
 
             $table->boolean('active')->default(1);
             $table->timestamps();

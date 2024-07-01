@@ -37,7 +37,8 @@ class ShopPageController extends Controller
             'address' => $item->{'address_' . $acceptLanguage},
             'open' => $item->open,
             'close' => $item->close,
-            'class' => $item->class
+            'long' => $item->class,
+            'lat' => $item->class
             ];
         });
 
