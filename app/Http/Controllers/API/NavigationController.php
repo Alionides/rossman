@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\DynamicPage;
 use App\Models\Navigation;
 use Illuminate\Http\Request;
 
 class NavigationController extends Controller
 {
     public function navigation(Request $request){
-        $acceptLanguage = $request->header('Accept-Language');
+        $acceptLanguage = $request->header('Accept-Language', 'az');
         $title = 'title_' . $acceptLanguage;
-        $data = Navigation::find(1);
+        $data = Navigation::first();
 
         $data_response = [];
 
@@ -39,16 +40,27 @@ class NavigationController extends Controller
         })->values()->all();
 
 
-        $red_nav_bottom = collect($data->red_nav_bottom);
-        $data_response['red_nav_bottom'] = $red_nav_bottom->filter(function ($item) {
-            return $item['active'] == 1;
-        })->map(function ($item) use ($title) {
+//        $red_nav_bottom = collect($data->red_nav_bottom);
+//        $data_response['red_nav_bottom'] = $red_nav_bottom->filter(function ($item) {
+//            return $item['active'] == 1;
+//        })->map(function ($item) use ($title) {
+//            return [
+//                'title' => $item[$title],
+//                'slug' => $item['slug'],
+//                'active' => $item['active']
+//            ];
+//        })->values()->all();
+        $dynamicPage = DynamicPage::where('active', 1)->get()
+        ->map(function ($dynamicPage) use($acceptLanguage) {
             return [
-                'title' => $item[$title],
-                'slug' => $item['slug'],
-                'active' => $item['active']
+                'title' => $dynamicPage->{'page_title_' . $acceptLanguage},
+                'slug_az' => $dynamicPage->slug_az,
+                'slug_en' => $dynamicPage->slug_en,
+                'slug_ru' => $dynamicPage->slug_ru,
             ];
-        })->values()->all();
+        });
+
+        $data_response['red_nav_bottom'] = $dynamicPage;
 
 
         $footer_about_nav = collect($data->footer_about_nav);

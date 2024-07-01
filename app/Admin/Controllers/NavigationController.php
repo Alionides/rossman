@@ -123,17 +123,17 @@ class NavigationController extends AdminController
                 ])->default(1);
             });
 
-            $form->table('red_nav_bottom', function ($table) {
-                $table->text('title_az')->icon("icon-key");
-                $table->text('title_en')->icon("icon-key");
-                $table->text('title_ru')->icon("icon-key");
-                $table->text('slug');
-//                $table->switch('active', __('Active'))->default(1);
-                $table->radio('active', __('Status'))->options([
-                    1 => 'Active',
-                    0 => 'Inactive',
-                ])->default(1);
-            });
+//            $form->table('red_nav_bottom', function ($table) {
+//                $table->text('title_az')->icon("icon-key");
+//                $table->text('title_en')->icon("icon-key");
+//                $table->text('title_ru')->icon("icon-key");
+//                $table->text('slug');
+////                $table->switch('active', __('Active'))->default(1);
+//                $table->radio('active', __('Status'))->options([
+//                    1 => 'Active',
+//                    0 => 'Inactive',
+//                ])->default(1);
+//            });
 
         });
 
